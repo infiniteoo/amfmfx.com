@@ -2,10 +2,8 @@
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
-//your local database url
-//27017 is the default mongoDB port
+// connect to cloud database atlas
 const uri = process.env.MONGODB_CONNECT_STRING;
-console.log(uri);
 
 mongoose.connect(uri, { autoIndex: false }).then(
   () => {

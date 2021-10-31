@@ -16,20 +16,16 @@ const user = require("./routes/user");
 
 // MIDDLEWARE
 app.use(morgan("dev"));
-app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  })
-);
-app.use(bodyParser.json());
+
+// BODY PARSER
+app.use(express.urlencoded({ extended: false }));
 
 // Sessions
 app.use(
   session({
-    secret: "fraggle-rock", //pick a random string to make the hash that is generated secure
-    /* store: new MongoStore({ mongooseConnection: dbConnection }), */
-    resave: false, //required
-    saveUninitialized: false, //required
+    secret: "bruce-is-a-cat",
+    resave: true,
+    saveUninitialized: true,
   })
 );
 
