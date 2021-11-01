@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Route, Link } from "react-router-dom";
-import Container from "@mui/material/Container";
+import { Container } from "@material-ui/core";
 // components
 import Signup from "./components/sign-up";
 import LoginForm from "./components/login-form";
@@ -52,7 +52,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <Container>
         <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {/* greet user if logged in: */}
         {this.state.loggedIn && <p>Join the party, {this.state.username}!</p>}
@@ -63,7 +63,7 @@ class App extends Component {
           render={() => <LoginForm updateUser={this.updateUser} />}
         />
         <Route path="/signup" render={() => <Signup />} />
-      </div>
+      </Container>
     );
   }
 }
