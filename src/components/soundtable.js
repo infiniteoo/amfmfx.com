@@ -14,34 +14,10 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import axios from "axios";
-import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import CircleLoading from "./loading.js";
 import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
 import Waveform from "./Waveform";
 import demoAudio from "../sounds/FX Abyss.mp3";
-
-function createData(name, calories, fat, carbs, protein, price) {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
-    history: [
-      {
-        date: "2020-01-05",
-        customerId: "11091700",
-        amount: 3,
-      },
-      {
-        date: "2020-01-02",
-        customerId: "Anonymous",
-        amount: 1,
-      },
-    ],
-  };
-}
 
 function Row(props) {
   const { row } = props;
@@ -70,55 +46,34 @@ function Row(props) {
           {row.soundType}
         </TableCell>
         <TableCell align="right" className="white-text">
-          {row.length}
+          {row.soundLength}
         </TableCell>
         <TableCell align="right" className="white-text">
-          {row.protein}
+          {row.category}
+        </TableCell>
+        <TableCell align="right" className="white-text">
+          {row.bpm}
+        </TableCell>
+        <TableCell align="right" className="white-text">
+          {row.key}
+        </TableCell>
+        <TableCell align="right" className="white-text">
+          {row.dateEntered}
+        </TableCell>
+        <TableCell align="right" className="white-text">
+          <DownloadForOfflineIcon />
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={12}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1, color: "white" }}>
-              {/* <Typography variant="h6" gutterBottom component="div">
-                History
-              </Typography> */}
-              <Table size="medium" aria-label="purchases">
+              <Table size="medium" aria-label="sounds" sx={{ width: "100%" }}>
                 <TableHead>
                   <TableRow>
                     <Waveform url={demoAudio} />
-                    {/*     <TableCell className="white-text">Date</TableCell>
-                    <TableCell className="white-text">Customer</TableCell>
-                    <TableCell className="white-text" align="right">
-                      Amount
-                    </TableCell>
-                    <TableCell className="white-text" align="right">
-                      Total price ($)
-                    </TableCell> */}
                   </TableRow>
                 </TableHead>
-                <TableBody>
-                  {/* {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell
-                        component="th"
-                        scope="row"
-                        className="white-text"
-                      >
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell className="white-text">
-                        {historyRow.customerId}
-                      </TableCell>
-                      <TableCell className="white-text" align="right">
-                        {historyRow.amount}
-                      </TableCell>
-                      <TableCell className="white-text" align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
-                    </TableRow>
-                  ))} */}
-                </TableBody>
               </Table>
             </Box>
           </Collapse>
@@ -127,24 +82,6 @@ function Row(props) {
     </React.Fragment>
   );
 }
-
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
 
 export default function Soundtable() {
   // get data from /api/sounds and console.log it
@@ -179,7 +116,7 @@ export default function Soundtable() {
               <TableRow>
                 <TableCell />
                 <TableCell className="white-text">Name</TableCell>
-                <TableCell align="right" className="white-text">
+                <TableCell align="center" className="white-text">
                   Description
                 </TableCell>
                 <TableCell align="right" className="white-text">
@@ -206,9 +143,6 @@ export default function Soundtable() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {/* {rows.map((row) => (
-          <Row key={row.name} row={row} />
-        ))} */}
               {sounds.map((sound) => (
                 <Row key={sound.name} row={sound} />
               ))}
