@@ -98,7 +98,7 @@ class LoginForm extends Component {
                 </button>
               </form>
               <p className="lead mt-4">
-                No Account? <a href="/register">Register</a>
+                No Account? <a href="/signup">Register</a>
               </p>
             </div>
           </div>
