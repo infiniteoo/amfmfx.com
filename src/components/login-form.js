@@ -58,7 +58,7 @@ class LoginForm extends Component {
       return (
         <div className="splashScreen">
           <div className="">
-            <div className="card card-body">
+            <div className="">
               <img src={amfmfxLogo} alt="" />
               <h1 className="text-center mb-3">
                 <i className="fas fa-sign-in-alt"></i> member login
@@ -66,25 +66,25 @@ class LoginForm extends Component {
 
               <form>
                 <div className="form-group">
-                  <label htmlFor="username">Email</label>
+                  {/* <label htmlFor="username">Email</label> */}
                   <input
                     type="email"
                     id="username"
                     name="username"
-                    className="form-control"
-                    placeholder="username"
+                    className="form-control p-3"
+                    placeholder="enter username"
                     value={this.state.username}
                     onChange={this.handleChange}
                   />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="password">Password</label>
+                <div className="form-group mt-3">
+                  {/* <label htmlFor="password">Password</label> */}
                   <input
                     type="password"
                     id="password"
                     name="password"
-                    className="form-control"
-                    placeholder="Enter Password"
+                    className="form-control p-3"
+                    placeholder="enter password"
                     value={this.state.password}
                     onChange={this.handleChange}
                   />
