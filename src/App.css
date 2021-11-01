@@ -20,3 +20,7 @@ body {
 .navbar a {
   text-decoration: none;
 }
+
+.navbar span:hover {
+  color: white !important;
+}
