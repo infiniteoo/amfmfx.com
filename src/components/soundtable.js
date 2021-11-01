@@ -15,6 +15,10 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import axios from "axios";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import CircleLoading from "./loading.js";
+import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
+import Waveform from "./Waveform";
+import demoAudio from "../sounds/FX Abyss.mp3";
 
 function createData(name, calories, fat, carbs, protein, price) {
   return {
@@ -82,7 +86,7 @@ function Row(props) {
               <Table size="medium" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <PlayCircleIcon />
+                    <Waveform url={demoAudio} />
                     {/*     <TableCell className="white-text">Date</TableCell>
                     <TableCell className="white-text">Customer</TableCell>
                     <TableCell className="white-text" align="right">
@@ -142,14 +146,6 @@ Row.propTypes = {
   }).isRequired,
 };
 
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0, 3.99),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3, 4.99),
-  createData("Eclair", 262, 16.0, 24, 6.0, 3.79),
-  createData("Cupcake", 305, 3.7, 67, 4.3, 2.5),
-  createData("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
-];
-
 export default function Soundtable() {
   // get data from /api/sounds and console.log it
   const [sounds, setSounds] = React.useState([]);
@@ -204,6 +200,9 @@ export default function Soundtable() {
                 <TableCell align="right" className="white-text">
                   Date
                 </TableCell>
+                <TableCell align="right" className="white-text">
+                  <DownloadForOfflineIcon />
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -217,7 +216,7 @@ export default function Soundtable() {
           </Table>
         </TableContainer>
       ) : (
-        <h1>Loading...</h1>
+        <CircleLoading />
       )}
     </div>
   );
