@@ -1,5 +1,8 @@
+const express = require("express");
+const router = express.Router();
+
 // SOUNDS MODEL
-const Sounds = require("../models/Sounds");
+const Sounds = require("../database/models/Sounds");
 
 // @route   GET api/sounds
 // @desc    Get all sounds
