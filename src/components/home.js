@@ -1,10 +1,14 @@
 import React from "react";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
+import Soundtable from "./soundtable";
 
 const Home = () => {
   return (
-    <div className="splashScreen">
-      <img src={amfmfxLogo} alt="" />
+    <div>
+      <Soundtable />
+      <div className="splashScreen">
+        <img src={amfmfxLogo} alt="" />
+      </div>
     </div>
   );
 };
