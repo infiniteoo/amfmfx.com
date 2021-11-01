@@ -61,7 +61,9 @@ function Row(props) {
           {row.dateEntered}
         </TableCell>
         <TableCell align="right" className="white-text">
-          <DownloadForOfflineIcon />
+          <a href={demoAudio} download>
+            <DownloadForOfflineIcon />
+          </a>
         </TableCell>
       </TableRow>
       <TableRow>
