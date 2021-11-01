@@ -47,45 +47,66 @@ function Row(props) {
         <TableCell>
           <IconButton
             aria-label="expand row"
+            className="white-text"
             size="small"
             onClick={() => setOpen(!open)}
           >
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
+        <TableCell className="white-text" component="th" scope="row">
           {row.name}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
+        <TableCell align="right" className="white-text">
+          {row.calories}
+        </TableCell>
+        <TableCell align="right" className="white-text">
+          {row.fat}
+        </TableCell>
+        <TableCell align="right" className="white-text">
+          {row.carbs}
+        </TableCell>
+        <TableCell align="right" className="white-text">
+          {row.protein}
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
+            <Box sx={{ margin: 1, color: "white" }}>
               <Typography variant="h6" gutterBottom component="div">
                 History
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell className="white-text">Date</TableCell>
+                    <TableCell className="white-text">Customer</TableCell>
+                    <TableCell className="white-text" align="right">
+                      Amount
+                    </TableCell>
+                    <TableCell className="white-text" align="right">
+                      Total price ($)
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.history.map((historyRow) => (
                     <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        className="white-text"
+                      >
                         {historyRow.date}
                       </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
+                      <TableCell className="white-text">
+                        {historyRow.customerId}
+                      </TableCell>
+                      <TableCell className="white-text" align="right">
+                        {historyRow.amount}
+                      </TableCell>
+                      <TableCell className="white-text" align="right">
                         {Math.round(historyRow.amount * row.price * 100) / 100}
                       </TableCell>
                     </TableRow>
@@ -131,19 +152,27 @@ export default function Soundtable() {
     <TableContainer
       component={Paper}
       sx={{
-        backgroundColor: "#ccc",
-        color: "white",
+        background:
+          "linear-gradient(120deg, rgba(255,255,255,.5) 5%, rgba(111,66,193,.5) 64%, rgba(234,57,184,.5) 88%)",
       }}
     >
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell className="white-text">Dessert (100g serving)</TableCell>
+            <TableCell align="right" className="white-text">
+              Calories
+            </TableCell>
+            <TableCell align="right" className="white-text">
+              Fat&nbsp;(g)
+            </TableCell>
+            <TableCell align="right" className="white-text">
+              Carbs&nbsp;(g)
+            </TableCell>
+            <TableCell align="right" className="white-text">
+              Protein&nbsp;(g)
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

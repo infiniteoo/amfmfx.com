@@ -35,3 +35,7 @@ body {
 .dashboard_container img {
   height: 100px;
 }
+
+.white-text {
+  color: white !important;
+}
