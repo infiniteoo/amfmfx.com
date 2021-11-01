@@ -2,17 +2,17 @@
 require("dotenv").config();
 
 const express = require("express");
-const bodyParser = require("body-parser");
+
 const morgan = require("morgan");
 const session = require("express-session");
-const dbConnection = require("./database");
-const MongoStore = require("connect-mongo")(session);
+
 const passport = require("./passport");
 const app = express();
 const PORT = process.env.PORT || 7777;
 
 // Route requires
 const user = require("./routes/user");
+const sounds = require("./routes/sounds");
 
 // MIDDLEWARE
 app.use(morgan("dev"));
@@ -36,7 +36,7 @@ app.use(passport.session()); // calls the deserializeUser
 
 // Routes
 app.use("/user", user);
-app.use("/api", require("./routes/sounds"));
+app.use("/api", sounds);
 
 // Starting Server
 app.listen(PORT, () => {
