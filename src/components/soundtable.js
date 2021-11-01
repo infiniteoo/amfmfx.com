@@ -13,6 +13,8 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import axios from "axios";
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 
 function createData(name, calories, fat, carbs, protein, price) {
   return {
@@ -58,13 +60,13 @@ function Row(props) {
           {row.name}
         </TableCell>
         <TableCell align="right" className="white-text">
-          {row.calories}
+          {row.description}
         </TableCell>
         <TableCell align="right" className="white-text">
-          {row.fat}
+          {row.soundType}
         </TableCell>
         <TableCell align="right" className="white-text">
-          {row.carbs}
+          {row.length}
         </TableCell>
         <TableCell align="right" className="white-text">
           {row.protein}
@@ -74,24 +76,25 @@ function Row(props) {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1, color: "white" }}>
-              <Typography variant="h6" gutterBottom component="div">
+              {/* <Typography variant="h6" gutterBottom component="div">
                 History
-              </Typography>
-              <Table size="small" aria-label="purchases">
+              </Typography> */}
+              <Table size="medium" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell className="white-text">Date</TableCell>
+                    <PlayCircleIcon />
+                    {/*     <TableCell className="white-text">Date</TableCell>
                     <TableCell className="white-text">Customer</TableCell>
                     <TableCell className="white-text" align="right">
                       Amount
                     </TableCell>
                     <TableCell className="white-text" align="right">
                       Total price ($)
-                    </TableCell>
+                    </TableCell> */}
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.history.map((historyRow) => (
+                  {/* {row.history.map((historyRow) => (
                     <TableRow key={historyRow.date}>
                       <TableCell
                         component="th"
@@ -110,7 +113,7 @@ function Row(props) {
                         {Math.round(historyRow.amount * row.price * 100) / 100}
                       </TableCell>
                     </TableRow>
-                  ))}
+                  ))} */}
                 </TableBody>
               </Table>
             </Box>
@@ -148,39 +151,74 @@ const rows = [
 ];
 
 export default function Soundtable() {
+  // get data from /api/sounds and console.log it
+  const [sounds, setSounds] = React.useState([]);
+  React.useEffect(() => {
+    axios
+      .get("/api/sounds")
+      .then((res) => {
+        setSounds(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  React.useEffect(() => {
+    console.log(sounds);
+  }, [sounds]);
+
   return (
-    <TableContainer
-      component={Paper}
-      sx={{
-        background:
-          "linear-gradient(120deg, rgba(255,255,255,.5) 5%, rgba(111,66,193,.5) 64%, rgba(234,57,184,.5) 88%)",
-      }}
-    >
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell className="white-text">Dessert (100g serving)</TableCell>
-            <TableCell align="right" className="white-text">
-              Calories
-            </TableCell>
-            <TableCell align="right" className="white-text">
-              Fat&nbsp;(g)
-            </TableCell>
-            <TableCell align="right" className="white-text">
-              Carbs&nbsp;(g)
-            </TableCell>
-            <TableCell align="right" className="white-text">
-              Protein&nbsp;(g)
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div>
+      {sounds.length > 0 ? (
+        <TableContainer
+          component={Paper}
+          sx={{
+            background:
+              "linear-gradient(120deg, rgba(255,255,255,.5) 5%, rgba(111,66,193,.5) 64%, rgba(234,57,184,.5) 88%)",
+          }}
+        >
+          <Table aria-label="collapsible table">
+            <TableHead>
+              <TableRow>
+                <TableCell />
+                <TableCell className="white-text">Name</TableCell>
+                <TableCell align="right" className="white-text">
+                  Description
+                </TableCell>
+                <TableCell align="right" className="white-text">
+                  Type
+                </TableCell>
+                <TableCell align="right" className="white-text">
+                  Length
+                </TableCell>
+                <TableCell align="right" className="white-text">
+                  Category
+                </TableCell>
+                <TableCell align="right" className="white-text">
+                  BPM
+                </TableCell>
+                <TableCell align="right" className="white-text">
+                  Key
+                </TableCell>
+                <TableCell align="right" className="white-text">
+                  Date
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {/* {rows.map((row) => (
+          <Row key={row.name} row={row} />
+        ))} */}
+              {sounds.map((sound) => (
+                <Row key={sound.name} row={sound} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      ) : (
+        <h1>Loading...</h1>
+      )}
+    </div>
   );
 }
