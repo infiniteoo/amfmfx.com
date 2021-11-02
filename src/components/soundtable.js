@@ -23,6 +23,7 @@ function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
 
+  console.log("row.filename", row.filename);
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -61,8 +62,8 @@ function Row(props) {
           {row.dateEntered}
         </TableCell>
         <TableCell align="right" className="white-text">
-          <a href={demoAudio} download>
-            <DownloadForOfflineIcon />
+          <a href={"../sounds/" + row.filename} download>
+            <DownloadForOfflineIcon sx={{ color: "white" }} />
           </a>
         </TableCell>
       </TableRow>
@@ -73,7 +74,7 @@ function Row(props) {
               <Table size="medium" aria-label="sounds" sx={{ width: "100%" }}>
                 <TableHead>
                   <TableRow>
-                    <Waveform url={demoAudio} />
+                    <Waveform url={row.filename} />
                   </TableRow>
                 </TableHead>
               </Table>

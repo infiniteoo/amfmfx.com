@@ -38,6 +38,8 @@ app.use(passport.session()); // calls the deserializeUser
 app.use("/user", user);
 app.use("/api", sounds);
 
+app.use(express.static("public"));
+
 // Starting Server
 app.listen(PORT, () => {
   console.log(`App listening on PORT: ${PORT}`);
