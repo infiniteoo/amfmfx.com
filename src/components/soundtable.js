@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -9,7 +8,6 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -17,13 +15,44 @@ import axios from "axios";
 import CircleLoading from "./loading.js";
 import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
 import Waveform from "./Waveform";
-import demoAudio from "../sounds/FX Abyss.mp3";
 
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
+  const [musicData, setMusicData] = React.useState("");
 
-  console.log("row.filename", row.filename);
+  const getMP3 = (filename) => {
+    console.log("clicked", filename);
+    axios({
+      url: "/api/sound/" + filename,
+      method: "GET",
+      responseType: "blob",
+    }).then((response) => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", filename);
+      document.body.appendChild(link);
+      link.click();
+    });
+
+    /*    axios
+      .get("/api/sound/" + filename, {
+        "Content-Type":
+          "audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml",
+      })
+      .then((response) => {
+        console.log(response, "response");
+        return response.data;
+      })
+      .catch((error) => {
+        console.log("error", error);
+      }); */
+  };
+
+  // axios get route to retrieve the mp3 file for each row
+
+  /*  console.log("musicdata", musicData); */
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -62,9 +91,10 @@ function Row(props) {
           {row.dateEntered}
         </TableCell>
         <TableCell align="right" className="white-text">
-          <a href={"../sounds/" + row.filename} download>
+          {/*  <a href={"../sounds/" + row.filename} download>
             <DownloadForOfflineIcon sx={{ color: "white" }} />
-          </a>
+          </a> */}
+          <button onClick={() => getMP3(row.filename)}>CLICK ME</button>
         </TableCell>
       </TableRow>
       <TableRow>
@@ -74,7 +104,13 @@ function Row(props) {
               <Table size="medium" aria-label="sounds" sx={{ width: "100%" }}>
                 <TableHead>
                   <TableRow>
-                    <Waveform url={row.filename} />
+                    <td>
+                      {row ? (
+                        <Waveform url={row.filename} filename={row.filename} />
+                      ) : (
+                        <CircleLoading />
+                      )}
+                    </td>
                   </TableRow>
                 </TableHead>
               </Table>
@@ -91,7 +127,7 @@ export default function Soundtable() {
   const [sounds, setSounds] = React.useState([]);
   React.useEffect(() => {
     axios
-      .get("/api/sounds")
+      .get("/api/sounds/")
       .then((res) => {
         setSounds(res.data);
       })

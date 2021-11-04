@@ -19,7 +19,7 @@ router.get("/sounds", (req, res) => {
 // @ access Private
 
 router.get("/sound/:filename", (req, res) => {
-  console.log("server side path touched");
+  
 
   res.sendFile(path.join(__dirname, "../public/sounds/", req.params.filename));
 });
