@@ -20,21 +20,6 @@ class Waveform extends Component {
     console.log("filename", this.filename);
     console.log("props", this.props);
 
-    axios
-      .get("/api/sound/" + this.filename, {
-        "Content-Type":
-          "audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml",
-        responseType: "audio/mp3",
-      })
-      .then((response) => {
-        console.log("response", response);
-
-        this.setState({ soundData: response.data });
-      })
-      .catch((error) => {
-        console.log("error", error);
-      });
-
     const track = document.querySelector("#track");
 
     this.waveform = WaveSurfer.create({
@@ -70,7 +55,12 @@ class Waveform extends Component {
           {!this.state.playing ? "Play" : "Pause"}
         </PlayButton>
         <Wave id="waveform" />
-        <audio id="track" src={this.state.soundData} type="audio/mpeg" />
+
+        <audio
+          id="track"
+          src={"/api/sound/" + this.filename}
+          type="audio/mpeg"
+        />
       </WaveformContainer>
     );
   }

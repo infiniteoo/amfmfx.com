@@ -35,24 +35,8 @@ function Row(props) {
       document.body.appendChild(link);
       link.click();
     });
-
-    /*    axios
-      .get("/api/sound/" + filename, {
-        "Content-Type":
-          "audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml",
-      })
-      .then((response) => {
-        console.log(response, "response");
-        return response.data;
-      })
-      .catch((error) => {
-        console.log("error", error);
-      }); */
   };
 
-  // axios get route to retrieve the mp3 file for each row
-
-  /*  console.log("musicdata", musicData); */
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -94,7 +78,12 @@ function Row(props) {
           {/*  <a href={"../sounds/" + row.filename} download>
             <DownloadForOfflineIcon sx={{ color: "white" }} />
           </a> */}
-          <button onClick={() => getMP3(row.filename)}>CLICK ME</button>
+          <button
+            onClick={() => getMP3(row.filename)}
+            style={{ backgroundColor: "transparent", border: "none" }}
+          >
+            <DownloadForOfflineIcon sx={{ color: "white" }} />
+          </button>
         </TableCell>
       </TableRow>
       <TableRow>
