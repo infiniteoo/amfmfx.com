@@ -19,10 +19,8 @@ import Waveform from "./Waveform";
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
-  const [musicData, setMusicData] = React.useState("");
 
   const getMP3 = (filename) => {
-    console.log("clicked", filename);
     axios({
       url: "/api/sound/" + filename,
       method: "GET",
@@ -75,9 +73,6 @@ function Row(props) {
           {row.dateEntered}
         </TableCell>
         <TableCell align="right" className="white-text">
-          {/*  <a href={"../sounds/" + row.filename} download>
-            <DownloadForOfflineIcon sx={{ color: "white" }} />
-          </a> */}
           <button
             onClick={() => getMP3(row.filename)}
             style={{ backgroundColor: "transparent", border: "none" }}

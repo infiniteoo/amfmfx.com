@@ -66,7 +66,6 @@ class LoginForm extends Component {
 
               <form>
                 <div className="form-group">
-                  {/* <label htmlFor="username">Email</label> */}
                   <input
                     type="email"
                     id="username"
@@ -78,7 +77,6 @@ class LoginForm extends Component {
                   />
                 </div>
                 <div className="form-group mt-3">
-                  {/* <label htmlFor="password">Password</label> */}
                   <input
                     type="password"
                     id="password"

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import WaveSurfer from "wavesurfer.js";
-import axios from "axios";
 
 import { WaveformContainer, Wave, PlayButton } from "./Waveform.styled.js";
 
@@ -45,10 +44,6 @@ class Waveform extends Component {
   };
 
   render() {
-    console.log("sounddata state", this.state.soundData);
-    console.log("track", document.querySelector("#track"));
-    const track = document.querySelector("#track");
-
     return (
       <WaveformContainer>
         <PlayButton onClick={this.handlePlay}>
