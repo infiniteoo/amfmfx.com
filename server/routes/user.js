@@ -43,6 +43,7 @@ router.post(
       password: req.user.password,
       accessLevel: req.user.accessLevel,
       downloadsRemaining: req.user.downloadsRemaining,
+      userId: req.user._id,
     };
     res.send(userInfo);
   }

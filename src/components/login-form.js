@@ -40,6 +40,7 @@ class LoginForm extends Component {
             username: response.data.username,
             downloadsRemaining: response.data.downloadsRemaining,
             accessLevel: response.data.accessLevel,
+            userId: response.data.userId,
           });
           // update the state to redirect to home
           this.setState({

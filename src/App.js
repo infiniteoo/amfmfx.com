@@ -17,6 +17,7 @@ class App extends Component {
       username: null,
       accessLevel: null,
       downloadsRemaining: null,
+      userId: null,
     };
 
     this.getUser = this.getUser.bind(this);
@@ -45,6 +46,7 @@ class App extends Component {
           username: response.data.user.username,
           accessLevel: response.data.user.accessLevel,
           downloadsRemaining: response.data.user.downloadsRemaining,
+          userId: response.data.user.userId,
         });
         console.log("state again", this.state);
       } else {
@@ -54,6 +56,7 @@ class App extends Component {
           username: null,
           accessLevel: null,
           downloadsRemaining: null,
+          userId: null,
         });
       }
     });
@@ -77,7 +80,9 @@ class App extends Component {
           path="/"
           render={
             this.state.loggedIn
-              ? () => <Dashboard updateUser={this.updateUser} />
+              ? () => (
+                  <Dashboard updateUser={this.updateUser} state={this.state} />
+                )
               : () => <Home />
           }
         />
