@@ -7,6 +7,7 @@ passport.serializeUser((user, done) => {
   console.log("*** serializeUser called, user: ");
   console.log(user); // the whole raw user object!
   console.log("---------");
+  console.log("blahblah");
   done(null, { _id: user._id });
 });
 
