@@ -1,6 +1,7 @@
 import React from "react";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
 import Soundtable from "./soundtable";
+import Sidebar from "./sidebar";
 
 const Dashboard = (props) => {
   console.log("dashboard state props", props.state);
@@ -8,6 +9,7 @@ const Dashboard = (props) => {
     <div className="dashboard_container">
       <img src={amfmfxLogo} alt="" />
       <Soundtable state={props.state} updateUser={props.updateUser} />
+      <Sidebar />
     </div>
   );
 };
