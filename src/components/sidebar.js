@@ -68,7 +68,6 @@ export default function Sidebar() {
           {/* FILTER SECTION */}
           <ListItemButton
             onClick={() => handleClick("filters")}
-            /* onClick={() => handleClick({ filters: !open.filters })} */
             sx={{
               backgroundColor: "white",
             }}
@@ -95,37 +94,9 @@ export default function Sidebar() {
           </Collapse>
           {/* END FILTER SECTION */}
 
-          {/* TOPICALS SECTION */}
-          <ListItemButton
-            onClick={() => handleClick("topicals")}
-            /* onClick={() => handleClick({ filters: !open.filters })} */
-            sx={{
-              backgroundColor: "white",
-            }}
-          >
-            <ListItemText primary="TOPICALS" sx={{ color: "black" }} />
-            {open.topicals ? (
-              <ExpandLess sx={{ color: "black" }} />
-            ) : (
-              <ExpandMore sx={{ color: "black" }} />
-            )}
-          </ListItemButton>
-          <Collapse in={open.topicals} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
-                <ListItemText primary="Christmas" />
-              </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
-                <ListItemText primary="Thanksgiving" />
-              </ListItemButton>
-            </List>
-          </Collapse>
-          {/* END TOPICALS SECTION */}
-
           {/* imaging SECTION */}
           <ListItemButton
             onClick={() => handleClick("imaging")}
-            /* onClick={() => handleClick({ filters: !open.filters })} */
             sx={{
               backgroundColor: "white",
             }}
@@ -196,7 +167,6 @@ export default function Sidebar() {
           {/* soundDesign SECTION */}
           <ListItemButton
             onClick={() => handleClick("soundDesign")}
-            /* onClick={() => handleClick({ filters: !open.filters })} */
             sx={{
               backgroundColor: "white",
             }}
@@ -229,7 +199,6 @@ export default function Sidebar() {
           {/* voiceSamples SECTION */}
           <ListItemButton
             onClick={() => handleClick("voiceSamples")}
-            /* onClick={() => handleClick({ filters: !open.filters })} */
             sx={{
               backgroundColor: "white",
             }}
