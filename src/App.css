@@ -21,13 +21,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: purple;
+  background: #32fbe2;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: pink;
+  background: #ea39b8;
 }
 
 .row {

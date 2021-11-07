@@ -6,7 +6,7 @@ import Sidebar from "./sidebar";
 const Home = () => {
   return (
     <div>
-      {/*     <Soundtable /> */}
+      <Soundtable />
       <Sidebar />
       <div className="splashScreen">
         <img src={amfmfxLogo} alt="" />

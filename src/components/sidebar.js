@@ -125,7 +125,6 @@ export default function Sidebar() {
           {/* music SECTION */}
           <ListItemButton
             onClick={() => handleClick("music")}
-            /* onClick={() => handleClick({ filters: !open.filters })} */
             sx={{
               backgroundColor: "white",
             }}
