@@ -69,8 +69,8 @@ class App extends Component {
         {/* greet user if logged in: */}
         {this.state.loggedIn && (
           <p>
-            welcome, {this.state.username}! (access level:{" "}
-            {this.state.accessLevel})
+            welcome, {this.state.username}! (downloads remaining:{" "}
+            {this.state.downloadsRemaining})
           </p>
         )}
         {/* Routes to different components */}

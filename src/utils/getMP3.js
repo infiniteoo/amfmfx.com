@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const getMP3 = (filename, state) => {
-  if (state.downloadsRemaining > 0) {
-    state.downloadsRemaining--;
+const getMP3 = (filename, props) => {
+  if (props.state.downloadsRemaining > 0) {
+    props.state.downloadsRemaining--;
     axios({
       url: "/api/sound/" + filename,
       method: "GET",
@@ -17,14 +17,14 @@ const getMP3 = (filename, state) => {
     });
 
     // update downloadsRemaining in Database after download
-    axios.post("/user/deduct-dl", state).then((response) => {
-      console.log(response.data);
+    axios.post("/user/deduct-dl", props.state).then((response) => {
+      props.updateUser(response);
     });
   } else {
     alert("You have reached your download limit.");
   }
 
-  console.log("getmp3 props.state", state);
+  console.log("getmp3 props.state", props.state);
 };
 
 export default getMP3;

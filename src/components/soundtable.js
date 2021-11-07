@@ -61,7 +61,7 @@ function Row(props) {
         </TableCell>
         <TableCell align="right" className="white-text">
           <button
-            onClick={() => getMP3(row.filename, props.state)}
+            onClick={() => getMP3(row.filename, props)}
             style={{ backgroundColor: "transparent", border: "none" }}
           >
             <DownloadForOfflineIcon sx={{ color: "white" }} />
@@ -94,8 +94,6 @@ function Row(props) {
 }
 
 export default function Soundtable(props) {
-
-    
   console.log("soundstable state props", props.state);
   // get data from /api/sounds and console.log it
   const [sounds, setSounds] = React.useState([]);
@@ -157,7 +155,12 @@ export default function Soundtable(props) {
             </TableHead>
             <TableBody>
               {sounds.map((sound) => (
-                <Row key={sound.name} row={sound} state={props.state} />
+                <Row
+                  key={sound.name}
+                  row={sound}
+                  state={props.state}
+                  updateUser={props.updateUser}
+                />
               ))}
             </TableBody>
           </Table>
