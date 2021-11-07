@@ -38,6 +38,8 @@ class LoginForm extends Component {
           this.props.updateUser({
             loggedIn: true,
             username: response.data.username,
+            downloadsRemaining: response.data.downloadsRemaining,
+            accessLevel: response.data.accessLevel,
           });
           // update the state to redirect to home
           this.setState({

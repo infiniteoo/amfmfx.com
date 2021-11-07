@@ -15,6 +15,8 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       username: null,
+      accessLevel: null,
+      downloadsRemaining: null,
     };
 
     this.getUser = this.getUser.bind(this);
@@ -33,6 +35,7 @@ class App extends Component {
   getUser() {
     axios.get("/user/").then((response) => {
       console.log("Get user response: ");
+      console.log("state", this.state);
       console.log(response.data);
       if (response.data.user) {
         console.log("Get User: There is a user saved in the server session: ");
@@ -40,12 +43,17 @@ class App extends Component {
         this.setState({
           loggedIn: true,
           username: response.data.user.username,
+          accessLevel: response.data.user.accessLevel,
+          downloadsRemaining: response.data.user.downloadsRemaining,
         });
+        console.log("state again", this.state);
       } else {
         console.log("Get user: no user");
         this.setState({
           loggedIn: false,
           username: null,
+          accessLevel: null,
+          downloadsRemaining: null,
         });
       }
     });
@@ -56,7 +64,12 @@ class App extends Component {
       <Container>
         <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {/* greet user if logged in: */}
-        {this.state.loggedIn && <p>welcome, {this.state.username}!</p>}
+        {this.state.loggedIn && (
+          <p>
+            welcome, {this.state.username}! (access level:{" "}
+            {this.state.accessLevel})
+          </p>
+        )}
         {/* Routes to different components */}
         <Route
           exact
