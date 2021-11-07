@@ -71,10 +71,15 @@ class App extends Component {
           </p>
         )}
         {/* Routes to different components */}
+
         <Route
           exact
           path="/"
-          component={this.state.loggedIn ? Dashboard : Home}
+          render={
+            this.state.loggedIn
+              ? () => <Dashboard updateUser={this.updateUser} />
+              : () => <Home />
+          }
         />
         <Route
           path="/login"
