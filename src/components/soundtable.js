@@ -18,6 +18,7 @@ import Waveform from "./Waveform";
 import getMP3 from "../utils/getMP3";
 
 function Row(props) {
+  console.log("in Row function, props", props);
   const { row } = props;
   const [open, setOpen] = React.useState(false);
 
@@ -60,7 +61,7 @@ function Row(props) {
         </TableCell>
         <TableCell align="right" className="white-text">
           <button
-            onClick={() => getMP3(row.filename)}
+            onClick={() => getMP3(row.filename, props.state)}
             style={{ backgroundColor: "transparent", border: "none" }}
           >
             <DownloadForOfflineIcon sx={{ color: "white" }} />
@@ -93,6 +94,8 @@ function Row(props) {
 }
 
 export default function Soundtable(props) {
+
+    
   console.log("soundstable state props", props.state);
   // get data from /api/sounds and console.log it
   const [sounds, setSounds] = React.useState([]);
@@ -154,7 +157,7 @@ export default function Soundtable(props) {
             </TableHead>
             <TableBody>
               {sounds.map((sound) => (
-                <Row key={sound.name} row={sound} />
+                <Row key={sound.name} row={sound} state={props.state} />
               ))}
             </TableBody>
           </Table>

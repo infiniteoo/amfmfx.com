@@ -28,6 +28,24 @@ router.post("/", (req, res) => {
   });
 });
 
+router.post("/deduct-dl", function (req, res) {
+  console.log("deduct-dl route hit");
+  console.log("deduct-dl req.body: ", req.body);
+  User.findOneAndUpdate(
+    { _id: req.body.userId },
+    { $inc: { downloadsRemaining: -1 } },
+    { new: true },
+    function (err, user) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(user);
+      }
+    }
+  );
+  /* res.send("deduct-dl response"); */
+});
+
 router.post(
   "/login",
   function (req, res, next) {
