@@ -2,6 +2,15 @@ body {
   font-family: "Comfortaa", cursive !important;
 }
 
+.css-10hburv-MuiTypography-root {
+  font-family: "Comfortaa", cursive !important;
+  font-size: 12px !important;
+}
+
+.css-ojxnvh-MuiButtonBase-root-MuiListItemButton-root:hover {
+  background-color: white !important;
+}
+
 .row {
   --bs-gutter-x: 0rem !important;
 }

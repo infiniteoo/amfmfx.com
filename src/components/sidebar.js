@@ -3,39 +3,37 @@ import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar from "@mui/material/AppBar";
+
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemButton from "@mui/material/ListItemButton";
+
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import Collapse from "@mui/material/Collapse";
+
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 
 const drawerWidth = 200;
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: "flex-end",
-}));
-
 export default function Sidebar() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+  const [open, setOpen] = React.useState({
+    filters: true,
+    topicals: true,
+    imaging: true,
+    music: true,
+    soundDesign: true,
+    voiceSamples: true,
+    formatSpecials: true,
+  });
 
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const handleClick = (which) => {
+    console.log("open state before click", open);
+    console.log("which value", which);
+
+    /* setOpen({ ...open, ...{ filters: which } }); */
+    setOpen({ ...open, [which]: !open[which] });
   };
 
   return (
@@ -45,46 +43,224 @@ export default function Sidebar() {
       <Drawer
         sx={{
           width: drawerWidth,
+
           flexShrink: 0,
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
           },
         }}
-        variant="persistent"
+        variant="permanent"
         anchor="left"
-        open={open}
+        open={open.filters}
       >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
+        <List
+          sx={{
+            width: "100%",
+
+            color: "white",
+            maxWidth: 360,
+            backgroundImage:
+              "linear-gradient(#17082e 0,#1a0933 7%,#1a0933 80%,#0c1f4c 100%)",
+          }}
+          component="nav"
+        >
+          {/* FILTER SECTION */}
+          <ListItemButton
+            onClick={() => handleClick("filters")}
+            /* onClick={() => handleClick({ filters: !open.filters })} */
+            sx={{
+              backgroundColor: "white",
+            }}
+          >
+            <ListItemText primary="FILTERS" sx={{ color: "black" }} />
+            {open.filters ? (
+              <ExpandLess sx={{ color: "black" }} />
             ) : (
-              <ChevronRightIcon />
+              <ExpandMore sx={{ color: "black" }} />
             )}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          </ListItemButton>
+          <Collapse in={open.filters} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="All Files" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="New This Week" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="New Since Last Visit" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+          {/* END FILTER SECTION */}
+
+          {/* TOPICALS SECTION */}
+          <ListItemButton
+            onClick={() => handleClick("topicals")}
+            /* onClick={() => handleClick({ filters: !open.filters })} */
+            sx={{
+              backgroundColor: "white",
+            }}
+          >
+            <ListItemText primary="TOPICALS" sx={{ color: "black" }} />
+            {open.topicals ? (
+              <ExpandLess sx={{ color: "black" }} />
+            ) : (
+              <ExpandMore sx={{ color: "black" }} />
+            )}
+          </ListItemButton>
+          <Collapse in={open.topicals} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Christmas" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Thanksgiving" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+          {/* END TOPICALS SECTION */}
+
+          {/* imaging SECTION */}
+          <ListItemButton
+            onClick={() => handleClick("imaging")}
+            /* onClick={() => handleClick({ filters: !open.filters })} */
+            sx={{
+              backgroundColor: "white",
+            }}
+          >
+            <ListItemText primary="IMAGING" sx={{ color: "black" }} />
+            {open.imaging ? (
+              <ExpandLess sx={{ color: "black" }} />
+            ) : (
+              <ExpandMore sx={{ color: "black" }} />
+            )}
+          </ListItemButton>
+          <Collapse in={open.imaging} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Brandings" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Promos" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sweepers" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+          {/* END imaging SECTION */}
+          {/* music SECTION */}
+          <ListItemButton
+            onClick={() => handleClick("music")}
+            /* onClick={() => handleClick({ filters: !open.filters })} */
+            sx={{
+              backgroundColor: "white",
+            }}
+          >
+            <ListItemText primary="MUSIC" sx={{ color: "black" }} />
+            {open.music ? (
+              <ExpandLess sx={{ color: "black" }} />
+            ) : (
+              <ExpandMore sx={{ color: "black" }} />
+            )}
+          </ListItemButton>
+          <Collapse in={open.music} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Music Beds" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Loops" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Ramp Loops" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Music Hooks" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Stagers" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Instrumentals" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Acapellas" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+          {/* END music SECTION */}
+
+          {/* soundDesign SECTION */}
+          <ListItemButton
+            onClick={() => handleClick("soundDesign")}
+            /* onClick={() => handleClick({ filters: !open.filters })} */
+            sx={{
+              backgroundColor: "white",
+            }}
+          >
+            <ListItemText primary="SOUND DESIGN" sx={{ color: "black" }} />
+            {open.soundDesign ? (
+              <ExpandLess sx={{ color: "black" }} />
+            ) : (
+              <ExpandMore sx={{ color: "black" }} />
+            )}
+          </ListItemButton>
+          <Collapse in={open.soundDesign} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="FX" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="SFX" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Drones & Pads" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Scratches" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+          {/* END soundDesign SECTION */}
+
+          {/* voiceSamples SECTION */}
+          <ListItemButton
+            onClick={() => handleClick("voiceSamples")}
+            /* onClick={() => handleClick({ filters: !open.filters })} */
+            sx={{
+              backgroundColor: "white",
+            }}
+          >
+            <ListItemText primary="VOICE SAMPLES" sx={{ color: "black" }} />
+            {open.voiceSamples ? (
+              <ExpandLess sx={{ color: "black" }} />
+            ) : (
+              <ExpandMore sx={{ color: "black" }} />
+            )}
+          </ListItemButton>
+          <Collapse in={open.voiceSamples} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Artist Audio" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Samples & Drops" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Acapella Cuts" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Listeners" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Numbers & Letters" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+          {/* END voiceSamples SECTION */}
         </List>
       </Drawer>
     </Box>
