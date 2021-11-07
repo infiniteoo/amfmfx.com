@@ -7,7 +7,7 @@ const Dashboard = (props) => {
   return (
     <div className="dashboard_container">
       <img src={amfmfxLogo} alt="" />
-      <Soundtable />
+      <Soundtable state={props.state} />
     </div>
   );
 };

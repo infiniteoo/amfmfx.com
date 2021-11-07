@@ -15,25 +15,11 @@ import axios from "axios";
 import CircleLoading from "./loading.js";
 import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
 import Waveform from "./Waveform";
+import getMP3 from "../utils/getMP3";
 
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
-
-  const getMP3 = (filename) => {
-    axios({
-      url: "/api/sound/" + filename,
-      method: "GET",
-      responseType: "blob",
-    }).then((response) => {
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", filename);
-      document.body.appendChild(link);
-      link.click();
-    });
-  };
 
   return (
     <React.Fragment>
@@ -106,7 +92,8 @@ function Row(props) {
   );
 }
 
-export default function Soundtable() {
+export default function Soundtable(props) {
+  console.log("soundstable state props", props.state);
   // get data from /api/sounds and console.log it
   const [sounds, setSounds] = React.useState([]);
   React.useEffect(() => {
