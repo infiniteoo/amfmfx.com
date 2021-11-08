@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
-
-import "../App.css";
 import axios from "axios";
+import "../App.css";
+import PopOver from "./accountpopover";
+
 
 class Navbar extends Component {
   constructor() {
     super();
     this.logout = this.logout.bind(this);
   }
+
+  state = { anchorEl: null };
 
   logout(event) {
     event.preventDefault();
@@ -50,17 +53,25 @@ class Navbar extends Component {
                 </Link>
               </section>
             ) : (
-              <section className="navbar-section">
-                <Link to="/" className="btn btn-link text-secondary">
-                  <span className="text-secondary">home</span>
-                </Link>
-                <Link to="/login" className="btn btn-link text-secondary">
-                  <span className="text-secondary">login</span>
-                </Link>
-                <Link to="/signup" className="btn btn-link">
-                  <span className="text-secondary">sign up</span>
-                </Link>
-              </section>
+              <ul className="navholder">
+                <li>
+                  {" "}
+                  <Link to="/" className="btn btn-link text-secondary">
+                    <span className="text-secondary">home</span>
+                  </Link>
+                  <Link to="/login" className="btn btn-link text-secondary">
+                    <span className="text-secondary">login</span>
+                  </Link>
+                  <Link to="/signup" className="btn btn-link">
+                    <span className="text-secondary">sign up</span>
+                  </Link>
+                </li>
+
+                <li className="nav-account">
+                  
+                  <PopOver />
+                </li>
+              </ul>
             )}
           </div>
         </header>

@@ -21,13 +21,8 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #32fbe2;
+  background: grey;
   border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #ea39b8;
 }
 
 .row {
@@ -50,7 +45,25 @@ body {
 }
 
 .navbar span:hover {
-  color: white !important;
+  color: #32fbe2 !important;
+}
+
+.navbar {
+  height: 75px;
+  padding-left: 200px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navholder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 88vw;
+  position: fixed;
+  border-bottom: 2px solid white;
+  z-index: 100;
 }
 
 .dashboard_container {
@@ -62,6 +75,7 @@ body {
 
 .dashboard_container img {
   height: 100px;
+  margin-right: auto;
 }
 
 .white-text {

@@ -64,34 +64,39 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
+      <React.Fragment>
         <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        {/* greet user if logged in: */}
-        {this.state.loggedIn && (
-          <p>
-            welcome, {this.state.username}! (downloads remaining:{" "}
-            {this.state.downloadsRemaining})
-          </p>
-        )}
-        {/* Routes to different components */}
+        <Container>
+          {/* greet user if logged in: */}
+          {this.state.loggedIn && (
+            <p>
+              welcome, {this.state.username}! (downloads remaining:{" "}
+              {this.state.downloadsRemaining})
+            </p>
+          )}
+          {/* Routes to different components */}
 
-        <Route
-          exact
-          path="/"
-          render={
-            this.state.loggedIn
-              ? () => (
-                  <Dashboard updateUser={this.updateUser} state={this.state} />
-                )
-              : () => <Home />
-          }
-        />
-        <Route
-          path="/login"
-          render={() => <LoginForm updateUser={this.updateUser} />}
-        />
-        <Route path="/signup" render={() => <Signup />} />
-      </Container>
+          <Route
+            exact
+            path="/"
+            render={
+              this.state.loggedIn
+                ? () => (
+                    <Dashboard
+                      updateUser={this.updateUser}
+                      state={this.state}
+                    />
+                  )
+                : () => <Home />
+            }
+          />
+          <Route
+            path="/login"
+            render={() => <LoginForm updateUser={this.updateUser} />}
+          />
+          <Route path="/signup" render={() => <Signup />} />
+        </Container>
+      </React.Fragment>
     );
   }
 }
