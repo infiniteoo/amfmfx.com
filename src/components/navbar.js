@@ -5,14 +5,11 @@ import axios from "axios";
 import "../App.css";
 import PopOver from "./accountpopover";
 
-
 class Navbar extends Component {
   constructor() {
     super();
     this.logout = this.logout.bind(this);
   }
-
-  state = { anchorEl: null };
 
   logout(event) {
     event.preventDefault();
@@ -43,15 +40,22 @@ class Navbar extends Component {
         <header className="navbar App-header" id="nav-container">
           <div className="">
             {loggedIn ? (
-              <section className="navbar-section">
-                <Link
-                  to="#"
-                  className="btn btn-link text-secondary"
-                  onClick={this.logout}
-                >
-                  <span className="text-secondary">logout</span>
-                </Link>
-              </section>
+              <ul className="navholder">
+                <li>
+                  {" "}
+                  <Link
+                    to="#"
+                    className="btn btn-link text-secondary"
+                    onClick={this.logout}
+                  >
+                    <span className="text-secondary">logout</span>
+                  </Link>
+                </li>
+
+                <li className="nav-account">
+                  <PopOver userInfo={this.props.userInfo} />
+                </li>
+              </ul>
             ) : (
               <ul className="navholder">
                 <li>
@@ -67,10 +71,9 @@ class Navbar extends Component {
                   </Link>
                 </li>
 
-                <li className="nav-account">
-                  
-                  <PopOver />
-                </li>
+                {/* <li className="nav-account">
+                  <PopOver userInfo={this.props.userInfo} />
+                </li> */}
               </ul>
             )}
           </div>

@@ -53,13 +53,19 @@ body {
   padding-left: 200px;
   align-items: center;
   justify-content: space-between;
+  position: fixed !important;
+  top: 0;
+  z-index: 100;
+  overflow: hidden;
+  width: 100%;
+  background-color: #000 !important;
 }
 
 .navholder {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
+  background-color: #000 !important;
   width: 88vw;
   position: fixed;
   border-bottom: 2px solid white;

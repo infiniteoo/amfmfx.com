@@ -65,7 +65,11 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+        <Navbar
+          updateUser={this.updateUser}
+          loggedIn={this.state.loggedIn}
+          userInfo={this.state}
+        />
         <Container>
           {/* greet user if logged in: */}
           {this.state.loggedIn && (

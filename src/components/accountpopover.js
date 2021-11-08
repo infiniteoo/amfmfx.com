@@ -1,10 +1,10 @@
 import * as React from "react";
 import Popover from "@mui/material/Popover";
-import Button from "@mui/material/Button";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Typography from "@mui/material/Typography";
 
-export default function PopOver() {
+export default function PopOver(props) {
+  console.log("userInfo", props.userInfo);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -35,7 +35,16 @@ export default function PopOver() {
           horizontal: "left",
         }}
       >
-        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+        <Typography sx={{ p: 2 }}>
+          {!props.userInfo.username
+            ? "Not logged in"
+            : `Username: ${props.userInfo.username}`}
+        </Typography>
+        <Typography sx={{ p: 2 }}>
+          {!props.userInfo.downloadsRemaining
+            ? ""
+            : `D/L Remaining: ${props.userInfo.downloadsRemaining}`}
+        </Typography>
       </Popover>
     </div>
   );
