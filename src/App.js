@@ -70,7 +70,7 @@ class App extends Component {
           loggedIn={this.state.loggedIn}
           userInfo={this.state}
         />
-        <Container>
+        <div className="mainContainer">
           {/* greet user if logged in: */}
           {this.state.loggedIn && (
             <p>
@@ -99,7 +99,7 @@ class App extends Component {
             render={() => <LoginForm updateUser={this.updateUser} />}
           />
           <Route path="/signup" render={() => <Signup />} />
-        </Container>
+        </div>
       </React.Fragment>
     );
   }

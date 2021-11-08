@@ -19,6 +19,9 @@ router.post("/", (req, res) => {
       const newUser = new User({
         username: username,
         password: password,
+        accessLevel: 1,
+        downloadsRemaining: 0,
+        lastLogin: Date.now(),
       });
       newUser.save((err, savedUser) => {
         if (err) return res.json(err);

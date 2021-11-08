@@ -9,6 +9,7 @@ const userSchema = new Schema({
   password: { type: String, unique: false, required: false },
   accessLevel: { type: Number, unique: false, required: false },
   downloadsRemaining: { type: Number, unique: false, required: false },
+  lastLogin: { type: Date, unique: false, required: false },
 });
 
 // Define schema methods

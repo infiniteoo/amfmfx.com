@@ -113,7 +113,7 @@ export default function Soundtable(props) {
   }, [sounds]);
 
   return (
-    <div style={{ marginTop: "100px" }}>
+    <div style={{ marginTop: "80px" }}>
       {sounds.length > 0 ? (
         <TableContainer
           component={Paper}
@@ -127,7 +127,7 @@ export default function Soundtable(props) {
               <TableRow>
                 <TableCell />
                 <TableCell className="white-text">Name</TableCell>
-                <TableCell align="center" className="white-text">
+                <TableCell align="right" className="white-text">
                   Description
                 </TableCell>
                 <TableCell align="right" className="white-text">
@@ -149,7 +149,7 @@ export default function Soundtable(props) {
                   Date
                 </TableCell>
                 <TableCell align="right" className="white-text">
-                  <DownloadForOfflineIcon />
+                  {/* <DownloadForOfflineIcon /> */}
                 </TableCell>
               </TableRow>
             </TableHead>

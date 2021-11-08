@@ -22,6 +22,8 @@ class Navbar extends Component {
           this.props.updateUser({
             loggedIn: false,
             username: null,
+            downloadsRemainng: null,
+            accessLevel: null,
           });
         }
       })
@@ -42,7 +44,6 @@ class Navbar extends Component {
             {loggedIn ? (
               <ul className="navholder">
                 <li>
-                  {" "}
                   <Link
                     to="#"
                     className="btn btn-link text-secondary"
@@ -53,28 +54,24 @@ class Navbar extends Component {
                 </li>
 
                 <li className="nav-account">
-                  <PopOver userInfo={this.props.userInfo} />
+                  <PopOver
+                    userInfo={this.props.userInfo}
+                    logout={this.logout}
+                  />
                 </li>
               </ul>
             ) : (
-              <ul className="navholder">
-                <li>
-                  {" "}
-                  <Link to="/" className="btn btn-link text-secondary">
-                    <span className="text-secondary">home</span>
-                  </Link>
-                  <Link to="/login" className="btn btn-link text-secondary">
-                    <span className="text-secondary">login</span>
-                  </Link>
-                  <Link to="/signup" className="btn btn-link">
-                    <span className="text-secondary">sign up</span>
-                  </Link>
-                </li>
-
-                {/* <li className="nav-account">
-                  <PopOver userInfo={this.props.userInfo} />
-                </li> */}
-              </ul>
+              <div>
+                <Link to="/" className="btn btn-link text-secondary">
+                  <span className="text-secondary">home</span>
+                </Link>
+                <Link to="/login" className="btn btn-link text-secondary">
+                  <span className="text-secondary">login</span>
+                </Link>
+                <Link to="/signup" className="btn btn-link">
+                  <span className="text-secondary">sign up</span>
+                </Link>
+              </div>
             )}
           </div>
         </header>
