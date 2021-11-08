@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Route } from "react-router-dom";
-import { Container } from "@material-ui/core";
+
 // components
 import Signup from "./components/sign-up";
 import LoginForm from "./components/login-form";
 import Navbar from "./components/navbar";
 import Home from "./components/home";
 import Dashboard from "./components/dashboard";
+
 
 class App extends Component {
   constructor() {
@@ -65,6 +66,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
+        
         <Navbar
           updateUser={this.updateUser}
           loggedIn={this.state.loggedIn}

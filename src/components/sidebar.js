@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -16,8 +16,6 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 const drawerWidth = 200;
 
 export default function Sidebar() {
-  const theme = useTheme();
-
   const [open, setOpen] = React.useState({
     filters: true,
     topicals: true,
