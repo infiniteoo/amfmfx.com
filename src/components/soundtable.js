@@ -113,7 +113,7 @@ export default function Soundtable(props) {
   }, [sounds]);
 
   return (
-    <div style={{ marginTop: "80px" }}>
+    <div style={{ marginTop: "3%" }}>
       {sounds.length > 0 ? (
         <TableContainer
           component={Paper}

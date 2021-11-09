@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
 import PopOver from "./accountpopover";
+import logo from "../assets/amfmfx.com text logo.png";
 
 class Navbar extends Component {
   constructor() {
@@ -44,13 +45,14 @@ class Navbar extends Component {
             {loggedIn ? (
               <ul className="navholder">
                 <li>
-                  <Link
+                  <img src={logo} alt="" srcset="" height="60px" />
+                  {/* <Link
                     to="#"
                     className="btn btn-link text-secondary"
                     onClick={this.logout}
                   >
                     <span className="text-secondary">logout</span>
-                  </Link>
+                  </Link> */}
                 </li>
 
                 <li className="nav-account">

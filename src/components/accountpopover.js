@@ -45,13 +45,15 @@ export default function PopOver(props) {
             ? ""
             : `Downloads Remaining: ${props.userInfo.downloadsRemaining}`}
         </Typography>
-        <button
-          onClick={props.logout}
-          className="btn btn-block btn-dark"
-          sx={{ margin: "auto" }}
-        >
-          Logout
-        </button>
+        <div className="logout-button-div">
+          <button
+            onClick={props.logout}
+            className="btn btn-block btn-dark"
+            sx={{ margin: "auto" }}
+          >
+            Logout
+          </button>
+        </div>
       </Popover>
     </div>
   );
