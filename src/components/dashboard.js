@@ -1,6 +1,7 @@
 import React from "react";
 
-import Soundtable from "./soundtable";
+/* import Soundtable from "./soundtable"; */
+import Soundtable from "./soundtable 2";
 import Sidebar from "./sidebar";
 
 const Dashboard = (props) => {
