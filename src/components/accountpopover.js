@@ -22,7 +22,7 @@ export default function PopOver(props) {
   return (
     <div>
       <AccountCircleIcon
-        sx={{ color: "white", fontSize: "40px" }}
+        sx={{ color: "white", fontSize: "40px", marginRight: "10px" }}
         onClick={handleClick}
       />
       <Popover
