@@ -179,8 +179,13 @@ export default function Soundtable(props) {
               <Waveform url={sound.filename} filename={sound.filename} />
             </CardMedia>
             <CardActions>
-              <Button size="small">Share</Button>
-              <Button size="small">Learn More</Button>
+              <button
+                onClick={() => getMP3(sound.filename, props)}
+                style={{ backgroundColor: "transparent", border: "none" }}
+              >
+                <DownloadForOfflineIcon sx={{ color: "white" }} />
+              </button>
+              
             </CardActions>
           </Card>
         ))

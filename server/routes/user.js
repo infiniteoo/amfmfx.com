@@ -20,8 +20,10 @@ router.post("/", (req, res) => {
         username: username,
         password: password,
         accessLevel: 1,
-        downloadsRemaining: 0,
+        downloadsRemaining: 5,
         lastLogin: Date.now(),
+        // today's date plus five days
+        fiveDayReset: Date.now() + 1000 * 60 * 60 * 24 * 5,
       });
       newUser.save((err, savedUser) => {
         if (err) return res.json(err);
@@ -64,6 +66,7 @@ router.post(
       password: req.user.password,
       accessLevel: req.user.accessLevel,
       downloadsRemaining: req.user.downloadsRemaining,
+
       userId: req.user._id,
     };
     res.send(userInfo);
