@@ -60,16 +60,28 @@ router.post(
   },
   passport.authenticate("local"),
   (req, res) => {
-    console.log("logged in ooga", req.user);
-    var userInfo = {
-      username: req.user.username,
-      password: req.user.password,
-      accessLevel: req.user.accessLevel,
-      downloadsRemaining: req.user.downloadsRemaining,
+    // update lastLogin date in database
+    User.findOneAndUpdate(
+      { _id: req.user._id },
+      { $set: { lastLogin: Date.now() } },
+      { new: true },
+      function (err, user) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("logged in ooga", req.user);
+          var userInfo = {
+            username: user.username,
+            password: user.password,
+            accessLevel: user.accessLevel,
+            downloadsRemaining: user.downloadsRemaining,
 
-      userId: req.user._id,
-    };
-    res.send(userInfo);
+            userId: user._id,
+          };
+          res.send(userInfo);
+        }
+      }
+    );
   }
 );
 
