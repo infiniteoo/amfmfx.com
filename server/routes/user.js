@@ -69,17 +69,39 @@ router.post(
         if (err) {
           console.log(err);
         } else {
-          console.log("logged in ooga", req.user);
-          var userInfo = {
-            username: user.username,
-            password: user.password,
-            accessLevel: user.accessLevel,
-            downloadsRemaining: user.downloadsRemaining,
-
-            userId: user._id,
-          };
-          res.send(userInfo);
+          // if user.lastLogin is greater than user.fiveDayReset, reset downloadsRemaining to 5
+          if (user.lastLogin > user.fiveDayReset) {
+            User.findOneAndUpdate(
+              { _id: req.user._id },
+              {
+                $set: {
+                  downloadsRemaining: user.downloadsRemaining + 5,
+                  fiveDayReset: Date.now() + 1000 * 60 * 60 * 24 * 5,
+                },
+              },
+              { new: true },
+              function (err, user) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log("weekly reset.  5 downloads added.");
+                }
+              }
+            );
+          } else {
+            console.log("todays date is less than five day reset date");
+          }
         }
+        console.log("logged in ooga", req.user);
+        var userInfo = {
+          username: user.username,
+          password: user.password,
+          accessLevel: user.accessLevel,
+          downloadsRemaining: user.downloadsRemaining,
+
+          userId: user._id,
+        };
+        res.send(userInfo);
       }
     );
   }
