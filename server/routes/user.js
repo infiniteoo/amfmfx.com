@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
         downloadsRemaining: 5,
         lastLogin: Date.now(),
         // today's date plus five days
-        fiveDayReset: Date.now() + 1000 * 60 * 60 * 24 * 5,
+        fifteenDayReset: Date.now() + 1000 * 60 * 60 * 24 * 15,
       });
       newUser.save((err, savedUser) => {
         if (err) return res.json(err);
@@ -69,14 +69,14 @@ router.post(
         if (err) {
           console.log(err);
         } else {
-          // if user.lastLogin is greater than user.fiveDayReset, reset downloadsRemaining to 5
-          if (user.lastLogin > user.fiveDayReset) {
+          // if user.lastLogin is greater than user.fifteenDayReset, reset downloadsRemaining to 5
+          if (user.lastLogin > user.fifteenDayReset) {
             User.findOneAndUpdate(
               { _id: req.user._id },
               {
                 $set: {
                   downloadsRemaining: user.downloadsRemaining + 5,
-                  fiveDayReset: Date.now() + 1000 * 60 * 60 * 24 * 5,
+                  fourteenDayReset: Date.now() + 1000 * 60 * 60 * 24 * 5,
                 },
               },
               { new: true },
@@ -84,8 +84,18 @@ router.post(
                 if (err) {
                   console.log(err);
                 } else {
-                  console.log("weekly reset.  5 downloads added.");
+                  console.log("bi-monthly reset.  5 downloads added.");
                 }
+                console.log("logged in ooga", req.user);
+                var userInfo = {
+                  username: user.username,
+                  password: user.password,
+                  accessLevel: user.accessLevel,
+                  downloadsRemaining: user.downloadsRemaining,
+
+                  userId: user._id,
+                };
+                res.send(userInfo);
               }
             );
           } else {

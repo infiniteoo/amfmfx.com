@@ -10,7 +10,7 @@ const userSchema = new Schema({
   accessLevel: { type: Number, unique: false, required: false },
   downloadsRemaining: { type: Number, unique: false, required: false },
   lastLogin: { type: Date, unique: false, required: false },
-  fiveDayReset: { type: Date, unique: false, required: false },
+  fifteenDayReset: { type: Date, unique: false, required: false },
 });
 
 // Define schema methods
