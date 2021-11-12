@@ -28,7 +28,7 @@ class Waveform extends Component {
       cursorWidth: 1,
       container: "#waveform",
       backend: "WebAudio",
-      height: 50,
+      height: 25,
       progressColor: "#cd5ff8",
       responsive: true,
       waveColor: "#EFEFEF",

@@ -121,14 +121,15 @@ export default function Soundtable(props) {
 
   return (
     <div style={{ marginTop: "3%" }}>
-      {sounds ? (
+      {sounds.length > 0 ? (
         sounds.map((sound) => (
           <Card
             sx={{
-              height: "175px",
+              height: "150px",
               width: "100%",
               background:
                 "linear-gradient(120deg, rgba(255,255,255,.5) 5%, rgba(111,66,193,.5) 64%, rgba(234,57,184,.5) 88%)",
+              boxShadow: "-0px -0px 8px #197e71, 18px 18px 8px #4bffff;",
             }}
           >
             <CardContent
@@ -139,7 +140,7 @@ export default function Soundtable(props) {
               }}
             >
               <div>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="subtitle1" component="div">
                   {sound.name} - {sound.description}
                 </Typography>
               </div>
@@ -150,26 +151,26 @@ export default function Soundtable(props) {
                 }}
               >
                 <div>
-                  <Typography gutterBottom variant="subtitle1" component="div">
+                  <Typography gutterBottom variant="subtitle2" component="div">
                     {sound.category}
                   </Typography>
                 </div>
                 <div> </div>
                 <div> | </div>
                 <div>
-                  <Typography gutterBottom variant="subtitle1" component="div">
+                  <Typography gutterBottom variant="subtitle2" component="div">
                     {sound.bpm}
                   </Typography>
                 </div>
                 <div> | </div>
                 <div>
-                  <Typography gutterBottom variant="subtitle1" component="div">
+                  <Typography gutterBottom variant="subtitle2" component="div">
                     {sound.key}
                   </Typography>
                 </div>
                 <div> | </div>
                 <div>
-                  <Typography gutterBottom variant="subtitle1" component="div">
+                  <Typography gutterBottom variant="subtitle2" component="div">
                     {sound.dateEntered}
                   </Typography>
                 </div>
@@ -185,7 +186,6 @@ export default function Soundtable(props) {
               >
                 <DownloadForOfflineIcon sx={{ color: "white" }} />
               </button>
-              
             </CardActions>
           </Card>
         ))

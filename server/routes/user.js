@@ -76,7 +76,7 @@ router.post(
               {
                 $set: {
                   downloadsRemaining: user.downloadsRemaining + 5,
-                  fourteenDayReset: Date.now() + 1000 * 60 * 60 * 24 * 5,
+                  fifteenDayReset: Date.now() + 1000 * 60 * 60 * 24 * 15,
                 },
               },
               { new: true },

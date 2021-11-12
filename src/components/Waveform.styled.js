@@ -12,15 +12,15 @@ export const WaveformContainer = styled.div`
 
 export const Wave = styled.div`
   width: 100%;
-  height: 50px;
+  height: 45px;
 `;
 
 export const PlayButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   background: #efefef;
   border-radius: 50%;
   border: none;
@@ -30,4 +30,6 @@ export const PlayButton = styled.button`
   &:hover {
     background: #ddd;
   }
+  margin-bottom: 10px;
+  margin-left: 10px;
 `;
