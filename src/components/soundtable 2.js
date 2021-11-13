@@ -126,10 +126,10 @@ export default function Soundtable(props) {
           <Card
             sx={{
               height: "150px",
+              marginTop: "5px",
               width: "100%",
               background:
                 "linear-gradient(120deg, rgba(255,255,255,.5) 5%, rgba(111,66,193,.5) 64%, rgba(234,57,184,.5) 88%)",
-              boxShadow: "-0px -0px 8px #197e71, 18px 18px 8px #4bffff;",
             }}
           >
             <CardContent
