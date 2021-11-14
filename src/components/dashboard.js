@@ -36,7 +36,6 @@ const Dashboard = (props) => {
         state={props.state}
         updateUser={props.updateUser}
         sounds={sounds}
-        blah={"blah"}
       />
       <Sidebar getSounds={getSounds} />
     </div>
