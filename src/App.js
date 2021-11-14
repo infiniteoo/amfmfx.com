@@ -103,6 +103,13 @@ class App extends Component {
                 ? () => (
                     <Admin updateUser={this.updateUser} state={this.state} />
                   )
+                : this.state.loggedIn && this.state.accessLevel < 4
+                ? () => (
+                    <Dashboard
+                      updateUser={this.updateUser}
+                      state={this.state}
+                    />
+                  )
                 : () => <Home />
             }
           />
