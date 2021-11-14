@@ -79,7 +79,10 @@ export default function Sidebar(props) {
           </ListItemButton>
           <Collapse in={open.filters} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("")}
+              >
                 <ListItemText primary="All Files" />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
@@ -108,13 +111,22 @@ export default function Sidebar(props) {
           </ListItemButton>
           <Collapse in={open.imaging} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Brandings")}
+              >
                 <ListItemText primary="Brandings" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Promos")}
+              >
                 <ListItemText primary="Promos" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Sweepers")}
+              >
                 <ListItemText primary="Sweepers" />
               </ListItemButton>
             </List>
@@ -142,22 +154,40 @@ export default function Sidebar(props) {
               >
                 <ListItemText primary="Music Beds" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Loops")}
+              >
                 <ListItemText primary="Loops" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Ramps")}
+              >
                 <ListItemText primary="Ramp Loops" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Hooks")}
+              >
                 <ListItemText primary="Music Hooks" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Stagers")}
+              >
                 <ListItemText primary="Stagers" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Instrumentals")}
+              >
                 <ListItemText primary="Instrumentals" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Acpellas")}
+              >
                 <ListItemText primary="Acapellas" />
               </ListItemButton>
             </List>
@@ -180,16 +210,28 @@ export default function Sidebar(props) {
           </ListItemButton>
           <Collapse in={open.soundDesign} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("FX")}
+              >
                 <ListItemText primary="FX" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("SFX")}
+              >
                 <ListItemText primary="SFX" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Drones")}
+              >
                 <ListItemText primary="Drones & Pads" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Scratches")}
+              >
                 <ListItemText primary="Scratches" />
               </ListItemButton>
             </List>
@@ -212,19 +254,29 @@ export default function Sidebar(props) {
           </ListItemButton>
           <Collapse in={open.voiceSamples} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Artists")}
+              >
                 <ListItemText primary="Artist Audio" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Samples")}
+              >
                 <ListItemText primary="Samples & Drops" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
-                <ListItemText primary="Acapella Cuts" />
-              </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Listeners")}
+              >
                 <ListItemText primary="Listeners" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Numbers")}
+              >
                 <ListItemText primary="Numbers & Letters" />
               </ListItemButton>
             </List>
