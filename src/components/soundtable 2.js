@@ -23,6 +23,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { uid } from "../utils/uid";
 
 function Row(props) {
   console.log("in Row function, props", props);
@@ -178,7 +179,12 @@ export default function Soundtable(props) {
             </CardContent>
             <CardMedia>
               {console.log("sound", sound.filename)}
-              <Waveform url={sound.filename} filename={sound.filename} />
+              <Waveform
+                url={sound.filename}
+                filename={sound.filename}
+                container={uid()}
+                track={uid()}
+              />
             </CardMedia>
             <CardActions>
               <button

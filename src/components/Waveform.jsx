@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import WaveSurfer from "wavesurfer.js";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
+import { uid } from "../utils/uid";
 
 import { WaveformContainer, Wave, PlayButton } from "./Waveform.styled.js";
 
@@ -15,18 +16,22 @@ class Waveform extends Component {
     super(props);
     this.url = props.url;
     this.filename = props.filename;
+    this.container = props.container;
+    this.track = props.track;
   }
 
   componentDidMount() {
     console.log("filename", this.filename);
     console.log("props", this.props);
+    console.log("this.container", this.container);
+    console.log("this.track", this.track);
 
-    const track = document.querySelector("#track");
+    const track = document.querySelector(`#${this.track}`);
 
     this.waveform = WaveSurfer.create({
       barWidth: 1,
       cursorWidth: 1,
-      container: "#waveform",
+      container: "#" + this.container,
       backend: "WebAudio",
       height: 25,
       progressColor: "#cd5ff8",
@@ -36,6 +41,8 @@ class Waveform extends Component {
       hideScrollbar: true,
     });
     console.log("url track:", this.url);
+    console.log("track", track);
+    console.log("this.waveform container=", this.waveform.container);
     this.waveform.load(track);
   }
 
@@ -46,15 +53,18 @@ class Waveform extends Component {
   };
 
   render() {
+    {
+      console.log("in return", this.container);
+    }
     return (
       <WaveformContainer>
         <PlayButton onClick={this.handlePlay}>
           {!this.state.playing ? <PlayArrowIcon /> : <PauseIcon />}
         </PlayButton>
-        <Wave id="waveform" />
+        <Wave id={this.container} />
 
         <audio
-          id="track"
+          id={this.track}
           src={"/api/sound/" + this.filename}
           type="audio/mpeg"
         />
