@@ -2,6 +2,7 @@ import * as React from "react";
 import Popover from "@mui/material/Popover";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 export default function PopOver(props) {
   console.log("userInfo", props.userInfo);
@@ -53,6 +54,11 @@ export default function PopOver(props) {
           >
             Logout
           </button>
+          {props.userInfo.accessLevel > 4 ? (
+            <Link to="/admin" className="btn btn-link text-secondary btn-light">
+              <span className="text-secondary">Admin Page</span>
+            </Link>
+          ) : null}
         </div>
       </Popover>
     </div>

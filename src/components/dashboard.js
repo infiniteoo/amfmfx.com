@@ -31,7 +31,6 @@ const Dashboard = (props) => {
 
   return (
     <div className="dashboard_container">
-      {/*  <img src={amfmfxLogo} alt="" /> */}
       <Soundtable
         state={props.state}
         updateUser={props.updateUser}

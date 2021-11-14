@@ -2,8 +2,10 @@ import React from "react";
 
 const admin = () => {
   return (
-    <div>
-      <h1>ADMIN PAGE BITCHES!</h1>
+    <div width="100%">
+      <div className="adminSplash">
+        <h1>ADD A SOUND TO THE DATABASE</h1>
+      </div>
     </div>
   );
 };
