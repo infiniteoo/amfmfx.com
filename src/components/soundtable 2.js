@@ -177,6 +177,7 @@ export default function Soundtable(props) {
               </div>
             </CardContent>
             <CardMedia>
+              {console.log("sound", sound.filename)}
               <Waveform url={sound.filename} filename={sound.filename} />
             </CardMedia>
             <CardActions>
