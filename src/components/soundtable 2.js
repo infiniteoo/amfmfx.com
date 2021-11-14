@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 import { uid } from "../utils/uid";
 
 export default function Soundtable(props) {
-  console.log("soundstable state props", props.state);
+  console.log("soundstable state props", props);
   // get data from /api/sounds and console.log it
   const [sounds, setSounds] = React.useState([]);
   React.useEffect(() => {
@@ -32,8 +32,8 @@ export default function Soundtable(props) {
 
   return (
     <div style={{ marginTop: "3%" }}>
-      {sounds.length > 0 ? (
-        sounds.map((sound) => (
+      {props.sounds.length > 0 ? (
+        props.sounds.map((sound) => (
           <Card
             sx={{
               height: "150px",

@@ -15,7 +15,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 
 const drawerWidth = "10%";
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   const [open, setOpen] = React.useState({
     filters: true,
     topicals: true,
@@ -136,7 +136,10 @@ export default function Sidebar() {
           </ListItemButton>
           <Collapse in={open.music} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => props.getSounds("Music")}
+              >
                 <ListItemText primary="Music Beds" />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
