@@ -8,7 +8,7 @@ import LoginForm from "./components/login-form";
 import Navbar from "./components/navbar";
 import Home from "./components/home";
 import Dashboard from "./components/dashboard";
-
+import Admin from "./components/admin";
 
 class App extends Component {
   constructor() {
@@ -66,7 +66,6 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        
         <Navbar
           updateUser={this.updateUser}
           loggedIn={this.state.loggedIn}
@@ -92,6 +91,17 @@ class App extends Component {
                       updateUser={this.updateUser}
                       state={this.state}
                     />
+                  )
+                : () => <Home />
+            }
+          />
+          <Route
+            exact
+            path="/admin"
+            render={
+              this.state.loggedIn && this.state.accessLevel > 4
+                ? () => (
+                    <Admin updateUser={this.updateUser} state={this.state} />
                   )
                 : () => <Home />
             }
