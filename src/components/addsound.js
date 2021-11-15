@@ -3,15 +3,14 @@ import axios from "axios";
 
 const addsound = () => {
   const [fileToUpload, setFileToUpload] = useState({
-    filename: null,
     name: null,
-
     description: null,
     category: null,
     subcategory: null,
     soundKey: null,
     length: null,
     bpm: null,
+    filename: null,
   });
 
   const handleClick = () => {
@@ -194,6 +193,7 @@ const addsound = () => {
                     setFileToUpload({
                       ...fileToUpload,
                       length: parseInt(duration),
+
                       filename: file.name,
                     });
                     // Alternatively, just display the integer value with

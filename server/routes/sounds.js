@@ -35,7 +35,7 @@ router.get("/sound/:filename", (req, res) => {
 module.exports = router;
 
 router.post("/sounds/upload/", (req, res) => {
-  console.log(req.body);
+  console.log(req);
   // write req.body to Sounds database
   const newSound = new Sounds({
     soundType: req.body.subcategory,
