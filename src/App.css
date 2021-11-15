@@ -66,6 +66,10 @@ body {
   color: #32fbe2 !important;
 }
 
+.add-sound-form label {
+  margin-top: 10px;
+}
+
 .navholder {
   display: flex;
   flex-direction: row;
