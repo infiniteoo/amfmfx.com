@@ -3,7 +3,7 @@ import axios from "axios";
 
 const addsound = () => {
   const [fileToUpload, setFileToUpload] = useState({
-    file: null,
+    filename: null,
     name: null,
 
     description: null,
@@ -194,6 +194,7 @@ const addsound = () => {
                     setFileToUpload({
                       ...fileToUpload,
                       length: parseInt(duration),
+                      filename: file.name,
                     });
                     // Alternatively, just display the integer value with
                     // parseInt(duration)
@@ -205,7 +206,7 @@ const addsound = () => {
 
               reader.readAsDataURL(file);
             }
-            setFileToUpload({ ...fileToUpload, file: e.target.files[0] });
+            console.log("blah e.target.files[0].name", e.target.files[0].name);
           }}
         />
       </div>

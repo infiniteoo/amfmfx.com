@@ -36,4 +36,18 @@ module.exports = router;
 
 router.post("/sounds/upload/", (req, res) => {
   console.log(req.body);
+  // write req.body to Sounds database
+  const newSound = new Sounds({
+    soundType: req.body.subcategory,
+    name: req.body.name,
+    filename: req.body.filename,
+    description: req.body.description,
+    category: req.body.category,
+    key: req.body.soundKey,
+    dateEntered: Date.now(),
+    length: req.body.length,
+    bpm: req.body.bpm,
+  });
+
+  newSound.save().then((sound) => res.json(sound));
 });
