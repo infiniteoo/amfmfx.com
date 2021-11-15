@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const addsound = () => {
   const [fileToUpload, setFileToUpload] = useState({
@@ -18,6 +19,16 @@ const addsound = () => {
     const chosenFiles = document.getElementById("files");
     console.log(chosenFiles.files);
     console.log(fileToUpload);
+
+    // send fileToUpload to server with axios
+    axios
+      .post("/api/sounds/upload", fileToUpload)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // Create a non-dom allocated Audio element

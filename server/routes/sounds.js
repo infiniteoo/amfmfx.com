@@ -33,3 +33,7 @@ router.get("/sound/:filename", (req, res) => {
 });
 
 module.exports = router;
+
+router.post("/sounds/upload/", (req, res) => {
+  console.log(req.body);
+});
