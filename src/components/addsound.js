@@ -4,11 +4,11 @@ const addsound = () => {
   const [fileToUpload, setFileToUpload] = useState({
     file: null,
     name: null,
-    type: null,
+
     description: null,
     category: null,
     subcategory: null,
-    key: null,
+    soundKey: null,
     length: null,
     bpm: null,
   });
@@ -63,6 +63,9 @@ const addsound = () => {
             setFileToUpload({ ...fileToUpload, category: e.target.value });
           }}
         >
+          <option value="" disabled selected>
+            select category
+          </option>
           <option>Imaging</option>
           <option>Music</option>
           <option>Sound Design</option>
@@ -82,7 +85,7 @@ const addsound = () => {
           }}
         >
           <option value="" disabled selected>
-            subcategory
+            select subcategory
           </option>
           <option>Brandings</option>
           <option>Promos</option>
@@ -105,14 +108,7 @@ const addsound = () => {
         </select>
       </div>
       <div class="form-group">
-        <label
-          for="exampleFormControlInput1"
-          className="text-secondary"
-          value={fileToUpload.key}
-          onChange={(e) => {
-            setFileToUpload({ ...fileToUpload, key: e.target.value });
-          }}
-        >
+        <label for="exampleFormControlInput1" className="text-secondary">
           Key
         </label>
         <input
@@ -120,6 +116,10 @@ const addsound = () => {
           class="form-control"
           id="exampleFormControlInput1"
           placeholder="enter key"
+          value={fileToUpload.key}
+          onChange={(e) => {
+            setFileToUpload({ ...fileToUpload, soundKey: e.target.value });
+          }}
         />
       </div>
       <div class="form-group">
