@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 
 const addsound = () => {
-  const [fileToUpload, setFileToUpload] = useState({});
+  const [fileToUpload, setFileToUpload] = useState({
+    file: null,
+    name: null,
+    type: null,
+    description: null,
+    category: null,
+    subcategory: null,
+    key: null,
+    length: null,
+    bpm: null,
+  });
 
   const handleClick = () => {
     console.log("clicked");
     const chosenFiles = document.getElementById("files");
     console.log(chosenFiles.files);
+    console.log(fileToUpload);
   };
   return (
     <form className="add-sound-form">
@@ -19,6 +30,10 @@ const addsound = () => {
           class="form-control"
           id="exampleFormControlInput1"
           placeholder="enter sound name"
+          value={fileToUpload.name}
+          onChange={(e) =>
+            setFileToUpload({ ...fileToUpload, name: e.target.value })
+          }
         />
       </div>
       <div class="form-group">
@@ -30,19 +45,27 @@ const addsound = () => {
           class="form-control"
           id="exampleFormControlInput1"
           placeholder="enter description"
+          value={fileToUpload.description}
+          onChange={(e) => {
+            setFileToUpload({ ...fileToUpload, description: e.target.value });
+          }}
         />
       </div>
       <div class="form-group">
         <label for="exampleFormControlSelect1" className="text-secondary">
           Category
         </label>
-        <select class="form-control" id="exampleFormControlSelect1">
+        <select
+          class="form-control"
+          id="exampleFormControlSelect1"
+          value={fileToUpload.category}
+          onChange={(e) => {
+            setFileToUpload({ ...fileToUpload, category: e.target.value });
+          }}
+        >
           <option>Imaging</option>
-
           <option>Music</option>
-
           <option>Sound Design</option>
-
           <option>Voices</option>
         </select>
       </div>
@@ -50,7 +73,17 @@ const addsound = () => {
         <label for="exampleFormControlSelect1" className="text-secondary">
           Sub Category
         </label>
-        <select class="form-control" id="exampleFormControlSelect1">
+        <select
+          class="form-control"
+          id="exampleFormControlSelect1"
+          value={fileToUpload.subcategory}
+          onChange={(e) => {
+            setFileToUpload({ ...fileToUpload, subcategory: e.target.value });
+          }}
+        >
+          <option value="" disabled selected>
+            subcategory
+          </option>
           <option>Brandings</option>
           <option>Promos</option>
           <option>Sweepers</option>
@@ -72,7 +105,14 @@ const addsound = () => {
         </select>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlInput1" className="text-secondary">
+        <label
+          for="exampleFormControlInput1"
+          className="text-secondary"
+          value={fileToUpload.key}
+          onChange={(e) => {
+            setFileToUpload({ ...fileToUpload, key: e.target.value });
+          }}
+        >
           Key
         </label>
         <input
@@ -91,6 +131,10 @@ const addsound = () => {
           class="form-control"
           id="exampleFormControlInput1"
           placeholder="enter BPM"
+          value={fileToUpload.bpm}
+          onChange={(e) => {
+            setFileToUpload({ ...fileToUpload, bpm: e.target.value });
+          }}
         />
       </div>
 
