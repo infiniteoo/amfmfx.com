@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import WaveSurfer from "wavesurfer.js";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
-import { uid } from "../utils/uid";
 
 import { WaveformContainer, Wave, PlayButton } from "./Waveform.styled.js";
 
@@ -53,9 +52,8 @@ class Waveform extends Component {
   };
 
   render() {
-    {
-      console.log("in return", this.container);
-    }
+    console.log("in return", this.container);
+
     return (
       <WaveformContainer>
         <PlayButton onClick={this.handlePlay}>

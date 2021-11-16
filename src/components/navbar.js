@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
@@ -46,14 +45,7 @@ class Navbar extends Component {
               <ul className="navholder">
                 <li>
                   <a href="/">
-                    <img src={logo} alt="" srcset="" height="60px" />
-                    {/* <Link
-                    to="#"
-                    className="btn btn-link text-secondary"
-                    onClick={this.logout}
-                  >
-                    <span className="text-secondary">logout</span>
-                  </Link> */}
+                    <img src={logo} alt="" srcSet="" height="60px" />
                   </a>
                 </li>
 

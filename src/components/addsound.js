@@ -3,14 +3,14 @@ import axios from "axios";
 
 const addsound = () => {
   const [fileToUpload, setFileToUpload] = useState({
-    name: null,
-    description: null,
-    category: null,
-    subcategory: null,
-    soundKey: null,
-    length: null,
-    bpm: null,
-    filename: null,
+    name: "",
+    description: "",
+    category: "",
+    subcategory: "",
+    soundKey: "",
+    length: "",
+    bpm: "",
+    filename: "",
   });
 
   const handleClick = () => {
@@ -41,13 +41,13 @@ const addsound = () => {
 
   return (
     <form className="add-sound-form">
-      <div class="form-group">
-        <label for="exampleFormControlInput1" className="text-secondary">
+      <div className="form-group">
+        <label htmlFor="exampleFormControlInput1" className="text-secondary">
           Name
         </label>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           id="exampleFormControlInput1"
           placeholder="enter sound name"
           value={fileToUpload.name}
@@ -56,13 +56,13 @@ const addsound = () => {
           }
         />
       </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1" className="text-secondary">
+      <div className="form-group">
+        <label htmlFor="exampleFormControlInput1" className="text-secondary">
           Description
         </label>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           id="exampleFormControlInput1"
           placeholder="enter description"
           value={fileToUpload.description}
@@ -71,19 +71,20 @@ const addsound = () => {
           }}
         />
       </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1" className="text-secondary">
+      <div className="form-group">
+        <label htmlFor="exampleFormControlSelect1" className="text-secondary">
           Category
         </label>
         <select
-          class="form-control"
+          className="form-control"
           id="exampleFormControlSelect1"
-          value={fileToUpload.category}
+          /*  defaultValue={"DEFAULT"} */
+          value={fileToUpload.category || "DEFAULT"}
           onChange={(e) => {
             setFileToUpload({ ...fileToUpload, category: e.target.value });
           }}
         >
-          <option value="" disabled selected>
+          <option value="DEFAULT" disabled hidden>
             select category
           </option>
           <option>Imaging</option>
@@ -92,19 +93,20 @@ const addsound = () => {
           <option>Voices</option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1" className="text-secondary">
+      <div className="form-group">
+        <label htmlFor="exampleFormControlSelect1" className="text-secondary">
           Sub Category
         </label>
         <select
-          class="form-control"
+          className="form-control"
           id="exampleFormControlSelect1"
-          value={fileToUpload.subcategory}
+          /* defaultValue={"DEFAULT"} */
+          value={fileToUpload.subcategory || "DEFAULT"}
           onChange={(e) => {
             setFileToUpload({ ...fileToUpload, subcategory: e.target.value });
           }}
         >
-          <option value="" disabled selected>
+          <option value="DEFAULT" disabled hidden>
             select subcategory
           </option>
           <option>Brandings</option>
@@ -127,13 +129,13 @@ const addsound = () => {
           <option>Numbers & Letters</option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1" className="text-secondary">
+      <div className="form-group">
+        <label htmlFor="exampleFormControlInput1" className="text-secondary">
           Key
         </label>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           id="exampleFormControlInput1"
           placeholder="enter key"
           value={fileToUpload.key}
@@ -142,13 +144,13 @@ const addsound = () => {
           }}
         />
       </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1" className="text-secondary">
+      <div className="form-group">
+        <label htmlFor="exampleFormControlInput1" className="text-secondary">
           BPM
         </label>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           id="exampleFormControlInput1"
           placeholder="enter BPM"
           value={fileToUpload.bpm}
@@ -175,8 +177,6 @@ const addsound = () => {
             var reader = new FileReader();
 
             if (target.files && file) {
-              var reader = new FileReader();
-
               reader.onload = function (e) {
                 audio.src = e.target.result;
                 audio.addEventListener(
@@ -189,7 +189,7 @@ const addsound = () => {
                     console.log(
                       "The duration of the song is of: " + duration + " seconds"
                     );
-                    let time = parseInt(duration);
+                    let time = parseInt(duration, 10);
                     let minutes = Math.floor(time / 60);
                     let seconds = time - minutes * 60;
                     console.log(
@@ -198,7 +198,7 @@ const addsound = () => {
 
                     setFileToUpload({
                       ...fileToUpload,
-                      length: parseInt(duration),
+                      length: parseInt(duration, 10),
 
                       filename: file.name,
                     });
