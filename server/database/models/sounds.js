@@ -34,7 +34,7 @@ const SoundSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  date: {
+  dateEntered: {
     type: Date,
     default: Date.now,
   },

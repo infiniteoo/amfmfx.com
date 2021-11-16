@@ -7,8 +7,8 @@ const Home = () => {
   return (
     <div width="100%">
       <div className="homeSplash">
-        <Sidebar />
-        <AddSound />
+        {/* <Sidebar />
+        <AddSound /> */}
         <img src={amfmfxLogo} alt="" />
       </div>
     </div>

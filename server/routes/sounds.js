@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const multer = require("multer");
+
 const storage = multer.diskStorage({
   destination: (req, file, callBack) => {
     callBack(null, "server/public/sounds/");
@@ -30,7 +31,7 @@ router.get("/sounds", (req, res) => {
 router.get("/sounds/:parameter", (req, res) => {
   console.log(req.params.parameter);
   Sounds.find({ soundType: req.params.parameter })
-    .sort({ date: -1 })
+    .sort({ dateEntered: -1 })
     .then((sounds) => res.json(sounds));
 });
 
@@ -41,8 +42,6 @@ router.get("/sounds/:parameter", (req, res) => {
 router.get("/sound/:filename", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/sounds/", req.params.filename));
 });
-
-module.exports = router;
 
 router.post("/sounds/upload/", (req, res) => {
   console.log(req);
@@ -72,3 +71,5 @@ router.post("/sounds/uploadFile", upload.single("file"), (req, res, next) => {
   }
   res.send(file);
 });
+
+module.exports = router;

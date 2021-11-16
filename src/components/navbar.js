@@ -45,14 +45,16 @@ class Navbar extends Component {
             {loggedIn ? (
               <ul className="navholder">
                 <li>
-                  <img src={logo} alt="" srcset="" height="60px" />
-                  {/* <Link
+                  <a href="/">
+                    <img src={logo} alt="" srcset="" height="60px" />
+                    {/* <Link
                     to="#"
                     className="btn btn-link text-secondary"
                     onClick={this.logout}
                   >
                     <span className="text-secondary">logout</span>
                   </Link> */}
+                  </a>
                 </li>
 
                 <li className="nav-account">
