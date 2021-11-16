@@ -1,6 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: (req, file, callBack) => {
+    callBack(null, "uploads");
+  },
+  filename: (req, file, callBack) => {
+    callBack(null, `${file.originalname}`);
+  },
+});
+let upload = multer({ dest: "uploads/", storage: storage });
 
 // SOUNDS MODEL
 const Sounds = require("../database/models/Sounds");
@@ -50,4 +60,15 @@ router.post("/sounds/upload/", (req, res) => {
   });
 
   newSound.save().then((sound) => res.json(sound));
+});
+
+router.post("/sounds/uploadFile", upload.single("file"), (req, res, next) => {
+  const file = req.file;
+  console.log(file.filename);
+  if (!file) {
+    const error = new Error("no file");
+    error.httpStatusCode = 400;
+    return next(error);
+  }
+  res.send(file);
 });

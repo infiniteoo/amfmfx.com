@@ -18,6 +18,8 @@ const addsound = () => {
     const chosenFiles = document.getElementById("files");
     console.log(chosenFiles.files);
     console.log(fileToUpload);
+    const data = new FormData();
+    data.append("file", chosenFiles.files[0]);
 
     // send fileToUpload to server with axios
     axios
@@ -28,6 +30,10 @@ const addsound = () => {
       .catch((err) => {
         console.log(err);
       });
+
+    axios.post("/api/sounds/uploadFile", data).then((res) => {
+      console.log(res);
+    });
   };
 
   // Create a non-dom allocated Audio element
