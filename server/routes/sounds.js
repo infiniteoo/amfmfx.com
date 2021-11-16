@@ -4,13 +4,13 @@ const path = require("path");
 const multer = require("multer");
 const storage = multer.diskStorage({
   destination: (req, file, callBack) => {
-    callBack(null, "uploads");
+    callBack(null, "server/public/sounds/");
   },
   filename: (req, file, callBack) => {
     callBack(null, `${file.originalname}`);
   },
 });
-let upload = multer({ dest: "uploads/", storage: storage });
+let upload = multer({ dest: "server/public/sounds/", storage: storage });
 
 // SOUNDS MODEL
 const Sounds = require("../database/models/Sounds");
