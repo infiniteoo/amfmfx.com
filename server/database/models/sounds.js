@@ -28,11 +28,11 @@ const SoundSchema = new mongoose.Schema({
   },
   bpm: {
     type: Number,
-    required: true,
+    required: false,
   },
   key: {
     type: String,
-    required: true,
+    required: false,
   },
   dateEntered: {
     type: Date,
