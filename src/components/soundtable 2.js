@@ -52,7 +52,8 @@ export default function Soundtable(props) {
             >
               <div>
                 <Typography gutterBottom variant="subtitle1" component="div">
-                  {sound.name} - {sound.description}
+                  {sound.name} <br />
+                  {sound.description}
                 </Typography>
               </div>
               <div
@@ -82,7 +83,7 @@ export default function Soundtable(props) {
                 <div> | </div>
                 <div>
                   <Typography gutterBottom variant="subtitle2" component="div">
-                    {sound.dateEntered}
+                    {sound.length} sec
                   </Typography>
                 </div>
               </div>
