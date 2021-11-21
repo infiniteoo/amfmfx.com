@@ -47,7 +47,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 }
 .adminSplash {
   display: flex;
@@ -110,7 +110,7 @@ body {
   display: grid;
   grid-template-columns: auto;
 
-  height: 100vh;
+  height: 100%;
 }
 
 .mainContainer {
@@ -125,4 +125,12 @@ body {
 
 .white-text {
   color: white !important;
+}
+
+.css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: rgb(167, 54, 110) !important;
+}
+
+.css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root {
+  color: #fff !important;
 }
