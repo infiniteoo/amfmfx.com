@@ -1,6 +1,6 @@
 import React from "react";
 import Waveform from "./Waveform";
-import { uid } from "../utils/uid";
+import VolumeSlider from "./VolumeSlider";
 
 const audioplayer = (props) => {
   const handleClick = (e) => {
@@ -25,6 +25,7 @@ const audioplayer = (props) => {
         track={trackId}
         onClick={() => handleClick()}
       />
+      <VolumeSlider />
     </div>
   );
 };
