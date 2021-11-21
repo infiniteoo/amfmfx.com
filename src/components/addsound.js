@@ -14,10 +14,9 @@ const addsound = () => {
   });
 
   const handleClick = () => {
-    console.log("clicked");
+    
     const chosenFiles = document.getElementById("files");
-    console.log(chosenFiles.files);
-    console.log(fileToUpload);
+    
     const data = new FormData();
     data.append("file", chosenFiles.files[0]);
 

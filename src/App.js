@@ -36,9 +36,7 @@ class App extends Component {
 
   getUser() {
     axios.get("/user/").then((response) => {
-      console.log("Get user response: ");
-      console.log("state", this.state);
-      console.log(response.data);
+      
       if (response.data.user) {
         console.log("Get User: There is a user saved in the server session: ");
 
@@ -49,7 +47,7 @@ class App extends Component {
           downloadsRemaining: response.data.user.downloadsRemaining,
           userId: response.data.user.userId,
         });
-        console.log("state again", this.state);
+        
       } else {
         console.log("Get user: no user");
         this.setState({

@@ -6,7 +6,7 @@ import VolumeDown from "@mui/icons-material/VolumeDown";
 import VolumeUp from "@mui/icons-material/VolumeUp";
 
 export default function ContinuousSlider(props) {
-  console.log("slider props", props);
+  
   const [value, setValue] = React.useState(5);
 
   const handleChange = (event, newValue) => {

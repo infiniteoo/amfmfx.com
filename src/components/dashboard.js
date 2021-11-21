@@ -27,7 +27,7 @@ const Dashboard = (props) => {
         console.log(err);
       });
   };
-  console.log("dashboard state props", props.state);
+  
 
   return (
     <div>

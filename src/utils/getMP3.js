@@ -23,8 +23,6 @@ const getMP3 = (filename, props) => {
   } else {
     alert("You have reached your download limit.");
   }
-
-  console.log("getmp3 props.state", props.state);
 };
 
 export default getMP3;

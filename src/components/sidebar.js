@@ -27,8 +27,7 @@ export default function Sidebar(props) {
   });
 
   const handleClick = (which) => {
-    console.log("open state before click", open);
-    console.log("which value", which);
+    
 
     /* setOpen({ ...open, ...{ filters: which } }); */
     setOpen({ ...open, [which]: !open[which] });

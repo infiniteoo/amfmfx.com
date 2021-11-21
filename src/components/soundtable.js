@@ -39,7 +39,7 @@ const Soundtable = (props) => {
       .get("/api/sounds/")
       .then((res) => {
         setSounds(res.data);
-        console.log("sounds", sounds);
+        
       })
       .catch((err) => {
         console.log(err);
@@ -57,7 +57,7 @@ const Soundtable = (props) => {
     window.scrollTo(0, 0);
   };
   React.useEffect(() => {
-    console.log(sounds);
+    
     setNoOfPages(Math.ceil(sounds.length / itemsPerPage));
   }, [sounds]);
 
@@ -144,7 +144,7 @@ const Soundtable = (props) => {
                     </div>
                   </CardContent>
                   <CardMedia>
-                    {console.log("sound", sound.filename)}
+                   
                     <Waveform
                       setActiveSound={props.setActiveSound}
                       url={sound.filename}
