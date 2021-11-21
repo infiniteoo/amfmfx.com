@@ -1,5 +1,5 @@
 import React from "react";
-
+import Audioplayer from "./audioplayer";
 import Sidebar from "./sidebar";
 import axios from "axios";
 import Soundtable from "./Soundtable.js";
@@ -29,13 +29,16 @@ const Dashboard = (props) => {
   console.log("dashboard state props", props.state);
 
   return (
-    <div className="dashboard_container">
-      <Soundtable
-        state={props.state}
-        updateUser={props.updateUser}
-        sounds={sounds}
-      />
-      <Sidebar getSounds={getSounds} />
+    <div>
+      <Audioplayer className="audioplayer_container" />
+      <div className="dashboard_container">
+        <Soundtable
+          state={props.state}
+          updateUser={props.updateUser}
+          sounds={sounds}
+        />
+        <Sidebar getSounds={getSounds} />
+      </div>
     </div>
   );
 };
