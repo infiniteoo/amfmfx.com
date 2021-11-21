@@ -7,7 +7,7 @@ const Home = () => {
       <div className="homeSplash">
         <img src={amfmfxLogo} alt="" />
       </div>
-    </div>~
+    </div>
   );
 };
 

@@ -54,6 +54,7 @@ const Soundtable = (props) => {
 
   const handleChange = (event, value) => {
     setPage(value);
+    window.scrollTo(0, 0);
   };
   React.useEffect(() => {
     console.log(sounds);
@@ -63,7 +64,7 @@ const Soundtable = (props) => {
   return (
     <div style={{ marginTop: "3%" }}>
       {sounds.length > 0 ? (
-        <List dense compoent="span">
+        <List dense component="span">
           {sounds
             .slice((page - 1) * itemsPerPage, page * itemsPerPage)
             .map((sound) => {
