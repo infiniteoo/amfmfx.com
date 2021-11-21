@@ -1,10 +1,8 @@
 import React from "react";
 
-/* import Soundtable from "./soundtable"; */
-import Soundtable from "./soundtable 2";
 import Sidebar from "./sidebar";
 import axios from "axios";
-import Demo from "./demo.js";
+import Soundtable from "./Soundtable.js";
 
 const Dashboard = (props) => {
   const [sounds, setSounds] = React.useState([]);
@@ -32,12 +30,11 @@ const Dashboard = (props) => {
 
   return (
     <div className="dashboard_container">
-      {/*  <Soundtable
+      <Soundtable
         state={props.state}
         updateUser={props.updateUser}
         sounds={sounds}
-      /> */}
-      <Demo state={props.state} updateUser={props.updateUser} sounds={sounds} />
+      />
       <Sidebar getSounds={getSounds} />
     </div>
   );

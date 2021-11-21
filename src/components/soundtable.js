@@ -1,173 +1,188 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Collapse from "@mui/material/Collapse";
-import IconButton from "@mui/material/IconButton";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import React from "react";
+import { List, ListItem, makeStyles, Divider, Box } from "@material-ui/core";
+import Pagination from "@mui/material/Pagination";
 import axios from "axios";
 import CircleLoading from "./loading.js";
+
 import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
 import Waveform from "./Waveform";
 import getMP3 from "../utils/getMP3";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { uid } from "../utils/uid";
 
-function Row(props) {
-  console.log("in Row function, props", props);
-  const { row } = props;
-  const [open, setOpen] = React.useState(false);
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    backgroundColor: "white",
+    color: "red !important",
+  },
+  item: {
+    padding: theme.spacing(1.2),
+    color: "white",
+  },
+  avatar: { marginRight: theme.spacing(5) },
+  paginator: {
+    justifyContent: "center",
+    padding: "10px",
+    color: "white !important",
+  },
+}));
 
-  return (
-    <React.Fragment>
-      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
-        <TableCell>
-          <IconButton
-            aria-label="expand row"
-            className="white-text"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
-        <TableCell className="white-text" component="th" scope="row">
-          {row.name}
-        </TableCell>
-        <TableCell align="right" className="white-text">
-          {row.description}
-        </TableCell>
-        <TableCell align="right" className="white-text">
-          {row.soundType}
-        </TableCell>
-        <TableCell align="right" className="white-text">
-          {row.soundLength}
-        </TableCell>
-        <TableCell align="right" className="white-text">
-          {row.category}
-        </TableCell>
-        <TableCell align="right" className="white-text">
-          {row.bpm}
-        </TableCell>
-        <TableCell align="right" className="white-text">
-          {row.key}
-        </TableCell>
-        <TableCell align="right" className="white-text">
-          {row.dateEntered}
-        </TableCell>
-        <TableCell align="right" className="white-text">
-          <button
-            onClick={() => getMP3(row.filename, props)}
-            style={{ backgroundColor: "transparent", border: "none" }}
-          >
-            <DownloadForOfflineIcon sx={{ color: "white" }} />
-          </button>
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={12}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1, color: "white" }}>
-              <Table size="medium" aria-label="sounds" sx={{ width: "100%" }}>
-                <TableHead>
-                  <TableRow>
-                    <td>
-                      {row ? (
-                        <Waveform url={row.filename} filename={row.filename} />
-                      ) : (
-                        <CircleLoading />
-                      )}
-                    </td>
-                  </TableRow>
-                </TableHead>
-              </Table>
-            </Box>
-          </Collapse>
-        </TableCell>
-      </TableRow>
-    </React.Fragment>
-  );
-}
-
-export default function Soundtable(props) {
-  console.log("soundstable state props", props.state);
-  // get data from /api/sounds and console.log it
+const Soundtable = (props) => {
   const [sounds, setSounds] = React.useState([]);
   React.useEffect(() => {
     axios
       .get("/api/sounds/")
       .then((res) => {
         setSounds(res.data);
+        console.log("sounds", sounds);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+  const classes = useStyles();
+  const itemsPerPage = 10;
+  const [page, setPage] = React.useState(1);
+  const [noOfPages, setNoOfPages] = React.useState(
+    Math.ceil(sounds.length / itemsPerPage)
+  );
 
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
   React.useEffect(() => {
     console.log(sounds);
+    setNoOfPages(Math.ceil(sounds.length / itemsPerPage));
   }, [sounds]);
 
   return (
     <div style={{ marginTop: "3%" }}>
       {sounds.length > 0 ? (
-        <TableContainer
-          component={Paper}
-          sx={{
-            background:
-              "linear-gradient(120deg, rgba(255,255,255,.5) 5%, rgba(111,66,193,.5) 64%, rgba(234,57,184,.5) 88%)",
-          }}
-        >
-          <Table aria-label="collapsible table">
-            <TableHead>
-              <TableRow>
-                <TableCell />
-                <TableCell className="white-text">Name</TableCell>
-                <TableCell align="right" className="white-text">
-                  Description
-                </TableCell>
-                <TableCell align="right" className="white-text">
-                  Type
-                </TableCell>
-                <TableCell align="right" className="white-text">
-                  Length
-                </TableCell>
-                <TableCell align="right" className="white-text">
-                  Category
-                </TableCell>
-                <TableCell align="right" className="white-text">
-                  BPM
-                </TableCell>
-                <TableCell align="right" className="white-text">
-                  Key
-                </TableCell>
-                <TableCell align="right" className="white-text">
-                  Date
-                </TableCell>
-                <TableCell align="right" className="white-text">
-                  {/* <DownloadForOfflineIcon /> */}
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {sounds.map((sound) => (
-                <Row
-                  key={sound.name}
-                  row={sound}
-                  state={props.state}
-                  updateUser={props.updateUser}
-                />
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <List dense compoent="span">
+          {sounds
+            .slice((page - 1) * itemsPerPage, page * itemsPerPage)
+            .map((sound) => {
+              const labelId = `list-secondary-label-${sounds._id}`;
+              return (
+                <Card
+                  sx={{
+                    marginTop: "5px",
+                    width: "100%",
+                    background:
+                      "linear-gradient(120deg, rgba(255,255,255,.5) 5%, rgba(111,66,193,.5) 64%, rgba(234,57,184,.5) 88%)",
+                  }}
+                >
+                  <CardContent
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      color: "white",
+                    }}
+                  >
+                    <div>
+                      <Typography
+                        gutterBottom
+                        variant="subtitle1"
+                        component="div"
+                      >
+                        {sound.name} <br />
+                        {sound.description}
+                      </Typography>
+                    </div>
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr",
+                      }}
+                    >
+                      <div>
+                        <Typography
+                          gutterBottom
+                          variant="subtitle2"
+                          component="div"
+                        >
+                          {sound.category}
+                        </Typography>
+                      </div>
+                      <div> </div>
+                      <div> | </div>
+                      <div>
+                        <Typography
+                          gutterBottom
+                          variant="subtitle2"
+                          component="div"
+                        >
+                          {sound.bpm}
+                        </Typography>
+                      </div>
+                      <div> | </div>
+                      <div>
+                        <Typography
+                          gutterBottom
+                          variant="subtitle2"
+                          component="div"
+                        >
+                          {sound.key}
+                        </Typography>
+                      </div>
+                      <div> | </div>
+                      <div>
+                        <Typography
+                          gutterBottom
+                          variant="subtitle2"
+                          component="div"
+                        >
+                          {sound.length} sec
+                        </Typography>
+                      </div>
+                    </div>
+                  </CardContent>
+                  <CardMedia>
+                    {console.log("sound", sound.filename)}
+                    <Waveform
+                      url={sound.filename}
+                      filename={sound.filename}
+                      container={uid()}
+                      track={uid()}
+                    />
+                  </CardMedia>
+                  <CardActions>
+                    <button
+                      onClick={() => getMP3(sound.filename, props)}
+                      style={{ backgroundColor: "transparent", border: "none" }}
+                    >
+                      <DownloadForOfflineIcon sx={{ color: "white" }} />
+                    </button>
+                  </CardActions>
+                </Card>
+              );
+            })}
+        </List>
       ) : (
         <CircleLoading />
       )}
+
+      <Divider />
+      <Box component="span">
+        <Pagination
+          count={noOfPages}
+          page={page}
+          onChange={handleChange}
+          defaultPage={1}
+          color="primary"
+          size="large"
+          showFirstButton
+          showLastButton
+          classes={{ ul: classes.paginator }}
+        />
+      </Box>
     </div>
   );
-}
+};
+
+export default Soundtable;
