@@ -22,7 +22,7 @@ class Waveform extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    this.waveform.setVolume(this.props.volume / 100);
+    this.waveform.setVolume(this.props.volume / 100 || 0.6);
   }
 
   componentDidMount() {
@@ -39,22 +39,18 @@ class Waveform extends Component {
       waveColor: "#EFEFEF",
       cursorColor: "transparent",
       hideScrollbar: true,
-      setVolume: this.volume / 100,
+      setVolume: this.volume / 100 || 0.5,
     });
 
     this.waveform.load(track);
   }
 
   handlePlay = () => {
-    this.waveform.setVolume(this.volume);
-
     this.setState({ playing: !this.state.playing });
     this.waveform.playPause();
   };
 
   render() {
-    
-
     return (
       <WaveformContainer>
         <PlayButton onClick={this.handlePlay}>
