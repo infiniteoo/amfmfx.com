@@ -22,7 +22,18 @@ class Waveform extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log("previous props", prevProps);
+    console.log("new props", this.props);
     this.waveform.setVolume(this.props.volume / 100 || 0.6);
+    if (prevProps.filename !== this.props.filename) {
+      this.url = this.props.url;
+      this.container = "#" + this.props.container;
+      const track = document.querySelector(`#${this.track}`);
+      this.track = this.props.track;
+      this.filename = this.props.filename;
+      track.setAttribute("src", "/api/sound/" + this.filename);
+      this.waveform.load(track);
+    }
   }
 
   componentDidMount() {
