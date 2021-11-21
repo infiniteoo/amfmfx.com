@@ -14,6 +14,7 @@ class Waveform extends Component {
   constructor(props) {
     super(props);
     this.url = props.url;
+    this.activeSound = props.setActiveSound;
     this.filename = props.filename;
     this.container = props.container;
     this.track = props.track;
@@ -42,13 +43,17 @@ class Waveform extends Component {
     console.log("url track:", this.url);
     console.log("track", track);
     console.log("this.waveform container=", this.waveform.container);
+    console.log("waveform state", this.state);
     this.waveform.load(track);
   }
 
   handlePlay = () => {
     console.log("handleplay hit");
+    this.activeSound = this.url;
+    console.log("activesound in handleplay", this.activeSound);
     this.setState({ playing: !this.state.playing });
     this.waveform.playPause();
+    console.log("waveform state", this.state);
   };
 
   render() {

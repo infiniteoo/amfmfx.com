@@ -146,6 +146,7 @@ const Soundtable = (props) => {
                   <CardMedia>
                     {console.log("sound", sound.filename)}
                     <Waveform
+                      setActiveSound={props.setActiveSound}
                       url={sound.filename}
                       filename={sound.filename}
                       container={uid()}

@@ -5,6 +5,7 @@ import axios from "axios";
 import Soundtable from "./Soundtable.js";
 
 const Dashboard = (props) => {
+  const [activeSound, setActiveSound] = React.useState("");
   const [sounds, setSounds] = React.useState([]);
   React.useEffect(() => {
     axios
@@ -30,12 +31,16 @@ const Dashboard = (props) => {
 
   return (
     <div>
-      <Audioplayer className="audioplayer_container" />
+      <Audioplayer
+        className="audioplayer_container"
+        activeSound={activeSound}
+      />
       <div className="dashboard_container">
         <Soundtable
           state={props.state}
           updateUser={props.updateUser}
           sounds={sounds}
+          setActiveSound={setActiveSound}
         />
         <Sidebar getSounds={getSounds} />
       </div>
