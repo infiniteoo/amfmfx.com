@@ -5,11 +5,13 @@ import Slider from "@mui/material/Slider";
 import VolumeDown from "@mui/icons-material/VolumeDown";
 import VolumeUp from "@mui/icons-material/VolumeUp";
 
-export default function ContinuousSlider() {
-  const [value, setValue] = React.useState(30);
+export default function ContinuousSlider(props) {
+  console.log("slider props", props);
+  const [value, setValue] = React.useState(5);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    props.setVolume(newValue);
   };
 
   return (
@@ -24,7 +26,6 @@ export default function ContinuousSlider() {
         />
         <VolumeUp sx={{ color: "#32fbe2" }} />
       </Stack>
-      <Slider disabled defaultValue={30} aria-label="Disabled slider" />
     </Box>
   );
 }

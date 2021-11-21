@@ -151,6 +151,8 @@ const Soundtable = (props) => {
                       filename={sound.filename}
                       container={uid()}
                       track={uid()}
+                      volume={props.volume}
+                      
                     />
                   </CardMedia>
                   <CardActions>

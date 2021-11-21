@@ -18,6 +18,11 @@ class Waveform extends Component {
     this.filename = props.filename;
     this.container = props.container;
     this.track = props.track;
+    this.volume = props.volume;
+  }
+
+  componentDidUpdate(prevProps) {
+    this.waveform.setVolume(this.props.volume / 100);
   }
 
   componentDidMount() {
@@ -39,6 +44,7 @@ class Waveform extends Component {
       waveColor: "#EFEFEF",
       cursorColor: "transparent",
       hideScrollbar: true,
+      setVolume: this.volume / 100,
     });
     console.log("url track:", this.url);
     console.log("track", track);
@@ -48,8 +54,9 @@ class Waveform extends Component {
   }
 
   handlePlay = () => {
+    this.waveform.setVolume(this.volume);
     console.log("handleplay hit");
-    this.activeSound = this.url;
+
     console.log("activesound in handleplay", this.activeSound);
     this.setState({ playing: !this.state.playing });
     this.waveform.playPause();
