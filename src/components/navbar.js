@@ -4,6 +4,7 @@ import axios from "axios";
 import "../App.css";
 import PopOver from "./accountpopover";
 import logo from "../assets/amfmfx.com text logo.png";
+import SearchBar from "./SearchBar";
 
 class Navbar extends Component {
   constructor() {
@@ -13,11 +14,10 @@ class Navbar extends Component {
 
   logout(event) {
     event.preventDefault();
-    
+
     axios
       .post("/user/logout")
       .then((response) => {
-        
         if (response.status === 200) {
           this.props.updateUser({
             loggedIn: false,
@@ -34,7 +34,6 @@ class Navbar extends Component {
 
   render() {
     const loggedIn = this.props.loggedIn;
-    
 
     return (
       <div>
@@ -46,6 +45,9 @@ class Navbar extends Component {
                   <a href="/">
                     <img src={logo} alt="" srcSet="" height="60px" />
                   </a>
+                </li>
+                <li>
+                  <SearchBar />
                 </li>
 
                 <li className="nav-account">

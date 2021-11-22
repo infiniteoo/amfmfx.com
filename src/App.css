@@ -32,6 +32,17 @@ body {
   border-radius: 10px;
 }
 
+.css-1x51dt5-MuiInputBase-input-MuiInput-input:focus {
+  color: white !important;
+  border-bottom: white;
+}
+
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+  color: white !important;
+  width: 100% !important;
+  border-bottom-color: rgba(255, 255, 255, 1) !important;
+}
+
 .row {
   --bs-gutter-x: 0rem !important;
 }
@@ -99,7 +110,9 @@ body {
 .navholder {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: auto;
   background-color: #000 !important;
   width: 100vw;
   position: fixed;
