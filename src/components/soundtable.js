@@ -33,17 +33,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Soundtable = (props) => {
-  /* const [sounds, setSounds] = React.useState([]); */
-  React.useEffect(() => {
-    axios
-      .get("/api/sounds/")
-      .then((res) => {
-        props.setSounds(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
   const classes = useStyles();
   const itemsPerPage = 10;
   const [page, setPage] = React.useState(1);
@@ -56,7 +45,6 @@ const Soundtable = (props) => {
     window.scrollTo(0, 0);
   };
   React.useEffect(() => {
-    console.log("sounds array useEffect triggered!");
     setNoOfPages(Math.ceil(props.sounds.length / itemsPerPage));
   }, [props.sounds]);
 
@@ -67,9 +55,9 @@ const Soundtable = (props) => {
           {props.sounds
             .slice((page - 1) * itemsPerPage, page * itemsPerPage)
             .map((sound) => {
-              const labelId = `list-secondary-label-${props.sounds._id}`;
               return (
                 <Card
+                  key={sound._id}
                   sx={{
                     marginTop: "5px",
                     width: "100%",
