@@ -37,6 +37,9 @@ const Dashboard = (props) => {
         volume={volume}
         setVolume={setVolume}
         activeSound={activeSound}
+        state={props.state}
+        updateUser={props.updateUser}
+        setActiveSound={setActiveSound}
       />
       <div className="dashboard_container">
         <Soundtable
@@ -44,6 +47,7 @@ const Dashboard = (props) => {
           updateUser={props.updateUser}
           sounds={sounds}
           volume={volume}
+          activeSound={activeSound}
           setActiveSound={setActiveSound}
         />
         <Sidebar getSounds={getSounds} />

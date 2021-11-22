@@ -14,8 +14,8 @@ class Waveform extends Component {
   constructor(props) {
     super(props);
     this.url = props.url;
-    this.activeSound = props.setActiveSound;
-    this.filename = props.filename;
+    this.activeSound = props.activeSound;
+    this.filename = props.filename || this.props.activeSound;
     this.container = props.container;
     this.track = props.track;
     this.volume = props.volume;
@@ -29,7 +29,7 @@ class Waveform extends Component {
       this.container = "#" + this.props.container;
       const track = document.querySelector(`#${this.track}`);
       this.track = this.props.track;
-      this.filename = this.props.filename;
+      this.filename = this.props.filename || this.props.activeSound;
       track.setAttribute("src", "/api/sound/" + this.filename);
       this.waveform.load(track);
     }
@@ -37,7 +37,7 @@ class Waveform extends Component {
 
   componentDidMount() {
     const track = document.querySelector(`#${this.track}`);
-    console.log("waveform component did mount props", this.props);
+
     this.waveform = WaveSurfer.create({
       barWidth: 1,
       cursorWidth: 1,
@@ -49,7 +49,7 @@ class Waveform extends Component {
       waveColor: "#EFEFEF",
       cursorColor: "transparent",
       hideScrollbar: true,
-      setVolume: this.volume / 100 || 0.5,
+      setVolume: this.volume / 100,
     });
 
     this.waveform.load(track);
@@ -57,7 +57,7 @@ class Waveform extends Component {
 
   handlePlay = () => {
     this.setState({ playing: !this.state.playing });
-    this.setActiveSound(this.filename);
+    this.props.setActiveSound(this.filename);
     this.waveform.playPause();
   };
 

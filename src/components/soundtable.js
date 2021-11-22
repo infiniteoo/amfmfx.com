@@ -40,8 +40,6 @@ const Soundtable = (props) => {
     Math.ceil(props.sounds.length / itemsPerPage)
   );
 
-  console.log("soundtable props", props);
-
   const handleChange = (event, value) => {
     setPage(value);
     window.scrollTo(0, 0);
