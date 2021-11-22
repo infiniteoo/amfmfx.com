@@ -22,8 +22,6 @@ class Waveform extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("previous props", prevProps);
-    console.log("new props", this.props);
     this.waveform.setVolume(this.props.volume / 100 || 0.6);
     if (prevProps.filename !== this.props.filename) {
       this.url = this.props.url;

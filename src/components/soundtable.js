@@ -33,12 +33,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Soundtable = (props) => {
-  const [sounds, setSounds] = React.useState([]);
+  /* const [sounds, setSounds] = React.useState([]); */
   React.useEffect(() => {
     axios
       .get("/api/sounds/")
       .then((res) => {
-        setSounds(res.data);
+        props.setSounds(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -48,7 +48,7 @@ const Soundtable = (props) => {
   const itemsPerPage = 10;
   const [page, setPage] = React.useState(1);
   const [noOfPages, setNoOfPages] = React.useState(
-    Math.ceil(sounds.length / itemsPerPage)
+    Math.ceil(props.sounds.length / itemsPerPage)
   );
 
   const handleChange = (event, value) => {
@@ -56,17 +56,18 @@ const Soundtable = (props) => {
     window.scrollTo(0, 0);
   };
   React.useEffect(() => {
-    setNoOfPages(Math.ceil(sounds.length / itemsPerPage));
-  }, [sounds]);
+    console.log("sounds array useEffect triggered!");
+    setNoOfPages(Math.ceil(props.sounds.length / itemsPerPage));
+  }, [props.sounds]);
 
   return (
     <div style={{ marginTop: "10%" }}>
-      {sounds.length > 0 ? (
+      {props.sounds.length > 0 ? (
         <List dense component="span">
-          {sounds
+          {props.sounds
             .slice((page - 1) * itemsPerPage, page * itemsPerPage)
             .map((sound) => {
-              const labelId = `list-secondary-label-${sounds._id}`;
+              const labelId = `list-secondary-label-${props.sounds._id}`;
               return (
                 <Card
                   sx={{

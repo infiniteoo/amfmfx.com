@@ -5,7 +5,7 @@ import axios from "axios";
 import Soundtable from "./Soundtable.js";
 
 const Dashboard = (props) => {
-  const [volume, setVolume] = React.useState(0.05);
+  const [volume, setVolume] = React.useState(0.3);
   const [sounds, setSounds] = React.useState([]);
   React.useEffect(() => {
     axios
@@ -21,13 +21,14 @@ const Dashboard = (props) => {
     axios
       .get(`/api/sounds/${parameter}`)
       .then((res) => {
+        console.log("getsounds, res.data", res.data);
         setSounds(res.data);
+        console.log("getsounds, sounds", sounds);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  
 
   return (
     <div>
