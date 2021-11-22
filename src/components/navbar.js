@@ -41,12 +41,12 @@ class Navbar extends Component {
           <div className="">
             {loggedIn ? (
               <ul className="navholder">
-                <li>
+                <li className="nav_logo">
                   <a href="/">
                     <img src={logo} alt="" srcSet="" height="60px" />
                   </a>
                 </li>
-                <li>
+                <li className="nav_search">
                   <SearchBar />
                 </li>
 
