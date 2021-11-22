@@ -52,6 +52,12 @@ class Waveform extends Component {
       setVolume: this.volume / 100,
     });
 
+    this.waveform.on("finish", () => {
+      console.log("finished event triggered");
+      this.setState({ playing: false });
+      console.log(this.state.playing);
+    });
+
     this.waveform.load(track);
   }
 
