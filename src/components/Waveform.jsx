@@ -53,9 +53,8 @@ class Waveform extends Component {
     });
 
     this.waveform.on("finish", () => {
-      console.log("finished event triggered");
       this.setState({ playing: false });
-      console.log(this.state.playing);
+      this.waveform.seekTo(0);
     });
 
     this.waveform.load(track);
