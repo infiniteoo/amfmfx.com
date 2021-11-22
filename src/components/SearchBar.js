@@ -4,21 +4,21 @@ import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 
-const searchDatabase = (searchTerm) => {
-  axios
-    .get(`/api/search/${searchTerm}`)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-export default function InputWithIcon() {
+export default function InputWithIcon(props) {
   const [searchValue, setSearchValue] = React.useState("");
   const handleChange = (e) => {
     setSearchValue(e.target.value);
+  };
+  const searchDatabase = (searchTerm) => {
+    axios
+      .get(`/api/search/${searchTerm}`)
+      .then((res) => {
+        console.log(res);
+        props.setSounds(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

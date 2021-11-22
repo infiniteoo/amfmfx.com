@@ -40,6 +40,7 @@ const Dashboard = (props) => {
         state={props.state}
         updateUser={props.updateUser}
         setActiveSound={setActiveSound}
+        setSounds={setSounds}
       />
       <div className="dashboard_container">
         <Soundtable

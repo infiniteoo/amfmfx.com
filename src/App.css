@@ -101,6 +101,7 @@ body {
 .nav-account {
   flex: 0 0 4%;
 }
+
 .navbar span:hover {
   color: #32fbe2 !important;
 }
@@ -122,9 +123,43 @@ body {
   overflow: hidden;
   background: rgb(37, 36, 36);
 }
+.audioPlayer_header {
+  border-bottom: 2px solid white;
+}
 
 .css-x3xxi0-MuiSvgIcon-root {
   margin-right: 4px !important;
+}
+
+.audioplayer_elements {
+  border-right: 2px solid white;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex: 0 0 20%;
+}
+
+.audioplayer_master {
+  display: flex !important;
+  flex: 0 0 80%;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: space-between !important;
+  padding-left: 1rem;
+}
+.searchbar_holder {
+  flex: 0 0 60% !important;
+}
+
+.volume_holder {
+  flex: 0 0 30% !important;
+  padding-left: 1rem;
+  align-items: center;
+}
+.divider_holder {
+  flex: 0 0 10% !important;
+  border-right: 1px solid white;
 }
 
 .navholder {

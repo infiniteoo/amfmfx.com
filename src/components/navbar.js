@@ -46,9 +46,9 @@ class Navbar extends Component {
                     <img src={logo} alt="" srcSet="" height="60px" />
                   </a>
                 </li>
-                <li className="nav_search">
+                {/*  <li className="nav_search">
                   <SearchBar />
-                </li>
+                </li> */}
 
                 <li className="nav-account">
                   <PopOver
