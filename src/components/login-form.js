@@ -23,7 +23,6 @@ class LoginForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    
 
     axios
       .post("/user/login", {
@@ -31,7 +30,6 @@ class LoginForm extends Component {
         password: this.state.password,
       })
       .then((response) => {
-        
         if (response.status === 200) {
           // update App.js state
           this.props.updateUser({
@@ -40,6 +38,7 @@ class LoginForm extends Component {
             downloadsRemaining: response.data.downloadsRemaining,
             accessLevel: response.data.accessLevel,
             userId: response.data.userId,
+            lastLogin: response.data.lastLogin,
           });
           // update the state to redirect to home
           this.setState({

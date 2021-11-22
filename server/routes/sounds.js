@@ -72,4 +72,28 @@ router.post("/sounds/uploadFile", upload.single("file"), (req, res, next) => {
   res.send(file);
 });
 
+router.get("/dates/new_this_week", (req, res) => {
+  console.log("route hit");
+
+  // get all sounds from the database uploaded within the last seven days
+  Sounds.find({ dateEntered: { $gte: Date.now() - 604800000 } })
+    .sort({ dateEntered: -1 })
+    .then((sounds) => {
+      console.log("new this week db response", sounds);
+      res.json(sounds);
+    });
+});
+
+router.get("/dates/new_since_last_visit", (req, res) => {
+  console.log("new since last visit route hit");
+  console.log("req", req);
+  // get all sounds from the database uploaded since the user last logged in
+  Sounds.find({ dateEntered: { $gte: req.user.lastLogin } })
+    .sort({ dateEntered: -1 })
+    .then((sounds) => {
+      console.log("new since last visit db response", sounds);
+      res.json(sounds);
+    });
+});
+
 module.exports = router;

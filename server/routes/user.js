@@ -92,6 +92,7 @@ router.post(
                   password: user.password,
                   accessLevel: user.accessLevel,
                   downloadsRemaining: user.downloadsRemaining,
+                  lastLogin: user.lastLogin,
 
                   userId: user._id,
                 };
@@ -108,7 +109,7 @@ router.post(
           password: user.password,
           accessLevel: user.accessLevel,
           downloadsRemaining: user.downloadsRemaining,
-
+          lastLogin: user.lastLogin,
           userId: user._id,
         };
         res.send(userInfo);

@@ -50,7 +50,11 @@ const Dashboard = (props) => {
           activeSound={activeSound}
           setActiveSound={setActiveSound}
         />
-        <Sidebar getSounds={getSounds} />
+        <Sidebar
+          getSounds={getSounds}
+          state={props.state}
+          setSounds={setSounds}
+        />
       </div>
     </div>
   );

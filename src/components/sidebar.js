@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import axios from "axios";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -16,6 +16,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 const drawerWidth = "10%";
 
 export default function Sidebar(props) {
+  console.log("in sidebar, props.state", props.state);
   const [open, setOpen] = React.useState({
     filters: true,
     topicals: true,
@@ -27,10 +28,28 @@ export default function Sidebar(props) {
   });
 
   const handleClick = (which) => {
-    
-
-    /* setOpen({ ...open, ...{ filters: which } }); */
     setOpen({ ...open, [which]: !open[which] });
+  };
+
+  const newThisWeek = () => {
+    axios
+      .get("/api/dates/new_this_week/")
+      .then((res) => {
+        props.setSounds(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const newSinceLastVisit = () => {
+    axios
+      .get(`/api/dates/new_since_last_visit/`, props.state.lastLogin)
+      .then((res) => {
+        props.setSounds(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -84,10 +103,13 @@ export default function Sidebar(props) {
               >
                 <ListItemText primary="All Files" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton sx={{ pl: 4 }} onClick={() => newThisWeek()}>
                 <ListItemText primary="New This Week" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => newSinceLastVisit()}
+              >
                 <ListItemText primary="New Since Last Visit" />
               </ListItemButton>
             </List>
