@@ -4,12 +4,26 @@ import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 
 export default function InputWithIcon() {
+  const [searchValue, setSearchValue] = React.useState("");
+  const handleChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
   return (
     <Box
       sx={{ display: "flex" /* , alignItems: "flex-end" */, color: "white" }}
     >
       <SearchIcon sx={{ color: "white", mr: 5, my: 0.5 }} />
       <TextField
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            /*  desiredFunction(); */
+            console.log(searchValue);
+            setSearchValue("");
+          }
+        }}
+        value={searchValue}
+        onChange={handleChange}
         id="input-with-sx"
         variant="standard"
         fullWidth
