@@ -96,4 +96,12 @@ router.get("/dates/new_since_last_visit", (req, res) => {
     });
 });
 
+router.get("/search/:search", (req, res) => {
+  console.log("search route hit");
+  console.log(req.params.search);
+  Sounds.find({ $text: { $search: req.params.search } }).then((sounds) =>
+    res.json(sounds)
+  );
+});
+
 module.exports = router;

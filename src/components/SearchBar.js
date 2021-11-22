@@ -2,6 +2,18 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
+import axios from "axios";
+
+const searchDatabase = (searchTerm) => {
+  axios
+    .get(`/api/search/${searchTerm}`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 export default function InputWithIcon() {
   const [searchValue, setSearchValue] = React.useState("");
@@ -10,15 +22,12 @@ export default function InputWithIcon() {
   };
 
   return (
-    <Box
-      sx={{ display: "flex" /* , alignItems: "flex-end" */, color: "white" }}
-    >
+    <Box sx={{ display: "flex", color: "white" }}>
       <SearchIcon sx={{ color: "white", mr: 5, my: 0.5 }} />
       <TextField
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            /*  desiredFunction(); */
-            console.log(searchValue);
+            searchDatabase(searchValue);
             setSearchValue("");
           }
         }}
