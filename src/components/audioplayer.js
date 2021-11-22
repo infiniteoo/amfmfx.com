@@ -3,19 +3,21 @@ import Waveform from "./Waveform";
 import VolumeSlider from "./VolumeSlider";
 
 const audioplayer = (props) => {
-  const handleClick = (e) => {
-    e.preventDefault();
-  };
+  React.useEffect(() => {
+    console.log(
+      "activesound useeffect in audioplayer triggered",
+      props.activeSound
+    );
+  }, [props.activeSound]);
 
-  const finalUrl = "/api/sound/FX BOOMerang.mp3";
-
+  const finalURL = "/api/sounds/" + props.activeSound;
   return (
     <div className="audioPlayer_container">
       <Waveform
         container="container"
         track="track"
-        filename="FX BOOMerang.mp3"
-        url={finalUrl}
+        filename={props.activeSound}
+        url={finalURL}
       />
       <VolumeSlider volume={props.volume} setVolume={props.setVolume} />
     </div>

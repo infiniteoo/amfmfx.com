@@ -19,6 +19,7 @@ class Waveform extends Component {
     this.container = props.container;
     this.track = props.track;
     this.volume = props.volume;
+    this.setActiveSound = props.setActiveSound;
   }
 
   componentDidUpdate(prevProps) {
@@ -36,7 +37,7 @@ class Waveform extends Component {
 
   componentDidMount() {
     const track = document.querySelector(`#${this.track}`);
-
+    console.log("waveform component did mount props", this.props);
     this.waveform = WaveSurfer.create({
       barWidth: 1,
       cursorWidth: 1,
@@ -56,6 +57,7 @@ class Waveform extends Component {
 
   handlePlay = () => {
     this.setState({ playing: !this.state.playing });
+    this.setActiveSound(this.filename);
     this.waveform.playPause();
   };
 
