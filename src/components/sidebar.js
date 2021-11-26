@@ -171,7 +171,7 @@ export default function Sidebar(props) {
             <List component="div" disablePadding>
               <ListItemButton
                 sx={{ pl: 4 }}
-                onClick={() => props.getSounds("Music")}
+                onClick={() => props.getSounds("Music Beds")}
               >
                 <ListItemText primary="Music Beds" />
               </ListItemButton>
