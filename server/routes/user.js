@@ -35,7 +35,7 @@ router.post("/", (req, res) => {
 
 router.post("/deduct-dl", function (req, res) {
   console.log("deduct-dl route hit");
-  console.log("deduct-dl req.body: ", req.body);
+  /*  console.log("deduct-dl req.body: ", req.body); */
   User.findOneAndUpdate(
     { _id: req.body.userId },
     { $inc: { downloadsRemaining: -1 } },
@@ -55,7 +55,7 @@ router.post(
   "/login",
   function (req, res, next) {
     console.log("routes/user.js, login, req.body: ");
-    console.log(req.body);
+    /*  console.log(req.body); */
     next();
   },
   passport.authenticate("local"),
@@ -86,7 +86,7 @@ router.post(
                 } else {
                   console.log("bi-monthly reset.  5 downloads added.");
                 }
-                console.log("logged in ooga", req.user);
+                /*  console.log("logged in ooga", req.user); */
                 var userInfo = {
                   username: user.username,
                   password: user.password,
@@ -103,7 +103,7 @@ router.post(
             console.log("todays date is less than five day reset date");
           }
         }
-        console.log("logged in ooga", req.user);
+        /* console.log("logged in ooga", req.user); */
         var userInfo = {
           username: user.username,
           password: user.password,
@@ -120,7 +120,7 @@ router.post(
 
 router.get("/", (req, res, next) => {
   console.log("===== user!!======");
-  console.log(req.user);
+  /*  console.log(req.user); */
   if (req.user) {
     res.json({ user: req.user });
   } else {

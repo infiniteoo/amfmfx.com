@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const multer = require("multer");
+const fs = require("fs");
 
 const storage = multer.diskStorage({
   destination: (req, file, callBack) => {
@@ -29,7 +30,7 @@ router.get("/sounds", (req, res) => {
 // @desc return various items from the sounds database depending on parameter
 // @access Public
 router.get("/sounds/:parameter", (req, res) => {
-  console.log(req.params.parameter);
+  /* console.log(req.params.parameter); */
   Sounds.find({ soundType: req.params.parameter })
     .sort({ dateEntered: -1 })
     .then((sounds) => res.json(sounds));
@@ -39,12 +40,18 @@ router.get("/sounds/:parameter", (req, res) => {
 // @ desc  Get sound by id
 // @ access Private
 
-router.get("/sound/:filename", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/sounds/", req.params.filename));
+router.get("/sound/:category/:subcategory/:filename", (req, res) => {
+  console.log("oogabooga", req.params);
+  res.sendFile(
+    path.join(
+      __dirname,
+      `../public/sounds/${req.params.category}/${req.params.subcategory}/${req.params.filename}`
+    )
+  );
 });
 
 router.post("/sounds/upload/", (req, res) => {
-  console.log(req);
+  /* console.log(req); */
   // write req.body to Sounds database
   const newSound = new Sounds({
     soundType: req.body.subcategory,
@@ -101,6 +108,19 @@ router.get("/search/:search", (req, res) => {
   console.log(req.params.search);
   Sounds.find({ $text: { $search: req.params.search } }).then((sounds) =>
     res.json(sounds)
+  );
+});
+
+router.post("/sounds/moveFile", (req, res) => {
+  // move file to subdirectory named after category and subcategory
+  const subdirectory = `${req.body.category}/${req.body.subcategory}`;
+  const newPath = path.join(__dirname, "../public/sounds/", subdirectory);
+  console.log("REQ.BODY", req.body);
+  console.log("NEWPATH:", newPath);
+  fs.mkdirSync(newPath, { recursive: true });
+  fs.renameSync(
+    path.join(__dirname, "../public/sounds/") + req.body.filename,
+    path.join(newPath, req.body.filename)
   );
 });
 

@@ -32,6 +32,10 @@ const addsound = () => {
 
     axios.post("/api/sounds/uploadFile", data).then((res) => {
       console.log(res);
+    }).then(() => {
+      axios.post("/api/sounds/moveFile", fileToUpload).then((res) => {
+        console.log(res);
+      });
     });
   };
 

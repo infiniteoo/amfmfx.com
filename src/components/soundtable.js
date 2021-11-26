@@ -133,8 +133,12 @@ const Soundtable = (props) => {
                   <CardMedia>
                     <Waveform
                       setActiveSound={props.setActiveSound}
-                      url={sound.filename}
-                      filename={sound.filename}
+                      url={
+                        `${sound.category}/${sound.soundType}/` + sound.filename
+                      }
+                      filename={
+                        `${sound.category}/${sound.soundType}/` + sound.filename
+                      }
                       container={uid()}
                       track={uid()}
                       volume={props.volume}
@@ -142,7 +146,13 @@ const Soundtable = (props) => {
                   </CardMedia>
                   <CardActions>
                     <button
-                      onClick={() => getMP3(sound.filename, props)}
+                      onClick={() =>
+                        getMP3(
+                          `${sound.category}/${sound.soundType}/` +
+                            sound.filename,
+                          props
+                        )
+                      }
                       style={{ backgroundColor: "transparent", border: "none" }}
                     >
                       <DownloadForOfflineIcon sx={{ color: "white" }} />
