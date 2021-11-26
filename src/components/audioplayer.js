@@ -17,6 +17,7 @@ const audioplayer = (props) => {
           filename={props.activeSound}
           url={finalURL}
           setActiveSound={props.setActiveSound}
+          volume={props.volume}
         />
       </div>
       <div
