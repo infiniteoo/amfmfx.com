@@ -10,6 +10,7 @@ const userSchema = new Schema({
   accessLevel: { type: Number, unique: false, required: false },
   downloadsRemaining: { type: Number, unique: false, required: false },
   lastLogin: { type: Date, unique: false, required: false },
+  previousLogin: { type: Date, unique: false, required: false },
   fifteenDayReset: { type: Date, unique: false, required: false },
 });
 

@@ -19,6 +19,8 @@ class App extends Component {
       accessLevel: null,
       downloadsRemaining: null,
       userId: null,
+      lastLogin: null,
+      previousLogin: null,
     };
 
     this.getUser = this.getUser.bind(this);

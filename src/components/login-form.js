@@ -39,7 +39,9 @@ class LoginForm extends Component {
             accessLevel: response.data.accessLevel,
             userId: response.data.userId,
             lastLogin: response.data.lastLogin,
+            previousLogin: response.data.previousLogin,
           });
+
           // update the state to redirect to home
           this.setState({
             redirectTo: "/",

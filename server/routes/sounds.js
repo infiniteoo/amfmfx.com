@@ -95,7 +95,7 @@ router.get("/dates/new_since_last_visit", (req, res) => {
   console.log("new since last visit route hit");
   console.log("req", req);
   // get all sounds from the database uploaded since the user last logged in
-  Sounds.find({ dateEntered: { $gte: req.user.lastLogin } })
+  Sounds.find({ dateEntered: { $gte: req.user.previousLogin } })
     .sort({ dateEntered: -1 })
     .then((sounds) => {
       console.log("new since last visit db response", sounds);

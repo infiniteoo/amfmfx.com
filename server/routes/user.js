@@ -61,14 +61,31 @@ router.post(
   passport.authenticate("local"),
   (req, res) => {
     // update lastLogin date in database
-    User.findOneAndUpdate(
+    User.findOne(
       { _id: req.user._id },
-      { $set: { lastLogin: Date.now() } },
-      { new: true },
+
       function (err, user) {
         if (err) {
           console.log(err);
         } else {
+          // store lastLogin to temporary variable
+          let tempDateVariable = user.lastLogin;
+          // set lastLogin to current date
+          User.findOneAndUpdate(
+            { _id: req.user._id },
+            {
+              $set: { lastLogin: Date.now(), previousLogin: tempDateVariable },
+            },
+            { new: true },
+            function (err, success) {
+              if (err) {
+                console.log(err);
+              } else {
+                console.log("success");
+              }
+            }
+          );
+
           // if user.lastLogin is greater than user.fifteenDayReset, reset downloadsRemaining to 5
           if (user.lastLogin > user.fifteenDayReset) {
             User.findOneAndUpdate(
@@ -93,7 +110,7 @@ router.post(
                   accessLevel: user.accessLevel,
                   downloadsRemaining: user.downloadsRemaining,
                   lastLogin: user.lastLogin,
-
+                  previousLogin: user.previousLogin,
                   userId: user._id,
                 };
                 res.send(userInfo);
@@ -103,7 +120,7 @@ router.post(
             console.log("todays date is less than five day reset date");
           }
         }
-        /* console.log("logged in ooga", req.user); */
+        console.log("logged in ooga", req.user);
         var userInfo = {
           username: user.username,
           password: user.password,
@@ -111,6 +128,7 @@ router.post(
           downloadsRemaining: user.downloadsRemaining,
           lastLogin: user.lastLogin,
           userId: user._id,
+          previousLogin: user.previousLogin,
         };
         res.send(userInfo);
       }

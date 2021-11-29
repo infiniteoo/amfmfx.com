@@ -43,7 +43,7 @@ export default function Sidebar(props) {
   };
   const newSinceLastVisit = () => {
     axios
-      .get(`/api/dates/new_since_last_visit/`, props.state.lastLogin)
+      .get(`/api/dates/new_since_last_visit/`, props.state.previousLogin)
       .then((res) => {
         props.setSounds(res.data);
       })
