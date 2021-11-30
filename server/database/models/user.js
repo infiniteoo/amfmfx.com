@@ -12,6 +12,8 @@ const userSchema = new Schema({
   lastLogin: { type: Date, unique: false, required: false },
   previousLogin: { type: Date, unique: false, required: false },
   fifteenDayReset: { type: Date, unique: false, required: false },
+  confirmed: { type: Boolean, unique: false, required: false },
+  email: { type: String, unique: false, required: false },
 });
 
 // Define schema methods
