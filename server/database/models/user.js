@@ -14,6 +14,7 @@ const userSchema = new Schema({
   fifteenDayReset: { type: Date, unique: false, required: false },
   confirmed: { type: Boolean, unique: false, required: false },
   email: { type: String, unique: false, required: false },
+  organization: { type: String, unique: false, required: false },
 });
 
 // Define schema methods
