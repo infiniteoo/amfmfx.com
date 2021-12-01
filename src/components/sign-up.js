@@ -9,6 +9,7 @@ class Signup extends Component {
       username: "",
       password: "",
       confirmPassword: "",
+      email: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -19,7 +20,6 @@ class Signup extends Component {
     });
   }
   handleSubmit(event) {
-    
     event.preventDefault();
 
     //request to server to add a new username/password
@@ -27,9 +27,9 @@ class Signup extends Component {
       .post("/user/", {
         username: this.state.username,
         password: this.state.password,
+        email: this.state.email,
       })
       .then((response) => {
-        
         if (!response.data.errmsg) {
           console.log("successful signup");
           this.setState({
@@ -75,6 +75,18 @@ class Signup extends Component {
                     type="password"
                     name="password"
                     value={this.state.password}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="form-group mt-3">
+                <div className="">
+                  <input
+                    className="form-control p-3"
+                    placeholder="enter email address"
+                    type="email"
+                    name="email"
+                    value={this.state.email}
                     onChange={this.handleChange}
                   />
                 </div>

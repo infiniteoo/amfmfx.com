@@ -48,6 +48,8 @@ class App extends Component {
           downloadsRemaining: response.data.user.downloadsRemaining,
           userId: response.data.user.userId,
           lastLogin: response.data.user.lastLogin,
+          email: response.data.user.email,
+          confirmed: response.data.user.confirmed,
         });
       } else {
         console.log("Get user: no user");
@@ -58,6 +60,8 @@ class App extends Component {
           downloadsRemaining: null,
           userId: null,
           lastLogin: null,
+          email: null,
+          confirmed: false,
         });
       }
     });

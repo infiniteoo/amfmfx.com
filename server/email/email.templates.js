@@ -7,12 +7,20 @@ const { CLIENT_ORIGIN } = require("../config");
 // (eg. unsubscribe) in the future.
 module.exports = {
   confirm: (id) => ({
-    subject: "React Confirm Email",
+    subject: "Welcome to AMFMFX.com!  Please Verify Your Email Address",
     html: `
+      <img src="cid:bruce@brucethecat.ee"/>
       <a href='${CLIENT_ORIGIN}/email/confirm/${id}'>
         click to confirm email
       </a>
     `,
     text: `Copy and paste this link: ${CLIENT_ORIGIN}/confirm/${id}`,
+    attachments: [
+      {
+        filename: "amfmfx.com text logo.png",
+        path: "./server/email/amfmfx.com text logo.png",
+        cid: "bruce@brucethecat.ee",
+      },
+    ],
   }),
 };
