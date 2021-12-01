@@ -11,6 +11,6 @@ router.post("/email", emailController.collectEmail);
 
 // Same as above, but this is the endpoint pinged in the componentDidMount of
 // Confirm.js on the client.
-router.get("/email/confirm/:id", emailController.confirmEmail);
+router.get("/confirm/:id", emailController.confirmEmail);
 
 module.exports = router;
