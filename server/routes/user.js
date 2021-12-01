@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
         email: email,
         username: username,
         password: password,
-        accessLevel: 1,
+        accessLevel: 0,
         organization: organization,
         confirmed: false,
         downloadsRemaining: 5,
@@ -126,6 +126,8 @@ router.post(
                   lastLogin: user.lastLogin,
                   previousLogin: user.previousLogin,
                   userId: user._id,
+                  email: user.email,
+                  confirmed: user.confirmed,
                 };
                 res.send(userInfo);
               }
