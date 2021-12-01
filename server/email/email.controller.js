@@ -1,4 +1,4 @@
-const User = require('../user.model')
+const User = require('../database/models/user')
 const sendEmail = require('./email.send')
 const msgs = require('./email.msgs')
 const templates = require('./email.templates')
