@@ -9,12 +9,13 @@ module.exports = {
   confirm: (id) => ({
     subject: "Welcome to AMFMFX.com!  Please Verify Your Email Address",
     html: `
-      <img src="cid:bruce@brucethecat.ee"/>
+      <img src="cid:bruce@brucethecat.ee"/><br/></br>
+      Thank you for signing up for AMFMFX.com!  To access your account, you must first verify your email address by clicking 
       <a href='${CLIENT_ORIGIN}/email/confirm/${id}'>
-        click to confirm email
-      </a>
+        this link
+      </a>.
     `,
-    text: `Copy and paste this link: ${CLIENT_ORIGIN}/confirm/${id}`,
+    text: `Copy and paste this link: ${CLIENT_ORIGIN}/email/confirm/${id}`,
     attachments: [
       {
         filename: "amfmfx.com text logo.png",

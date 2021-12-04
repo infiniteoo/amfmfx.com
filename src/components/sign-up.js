@@ -10,6 +10,7 @@ class Signup extends Component {
       password: "",
       confirmPassword: "",
       email: "",
+      successfulSignUp: "false",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -34,7 +35,7 @@ class Signup extends Component {
           console.log("successful signup");
           this.setState({
             //redirect to login page
-            redirectTo: "/login",
+            successfulSignUp: "true",
           });
         } else {
           console.log("username already taken");
@@ -47,7 +48,9 @@ class Signup extends Component {
   }
 
   render() {
-    return (
+    return this.state.successfulSignUp === "true" ? (
+      <h1>confirmed!</h1>
+    ) : (
       <div className="splashScreen">
         <div className="">
           <div className="">

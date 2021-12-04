@@ -11,14 +11,14 @@ router.post("/", (req, res) => {
   console.log("user signup");
 
   const { username, password, email, organization } = req.body;
-  console.log(username, password, email);
+
   // ADD VALIDATION
-  User.findOne({ email: email }, (err, user) => {
+  User.findOne({ username }, (err, user) => {
     if (err) {
       console.log("User.js post error: ", err);
     } else if (user) {
       res.json({
-        error: `Sorry, already a user with the email address: ${email}`,
+        errmsg: `Sorry, already a user with the email address: ${email}`,
       });
     } else {
       const newUser = new User({
@@ -41,8 +41,6 @@ router.post("/", (req, res) => {
           .catch((err) => console.log(err));
         res.json(savedUser);
       });
-
-      // send email
     }
   });
 });
