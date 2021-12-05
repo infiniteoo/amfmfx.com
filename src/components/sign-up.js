@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
+import ErrorSnackbar from "./Snackbar";
 
 class Signup extends Component {
   constructor() {
@@ -14,7 +15,15 @@ class Signup extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.open = false;
   }
+
+  componentDidUpdate(prevProps) {
+    if (this.open == prevProps.open) {
+      this.open = true;
+    }
+  }
+
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
@@ -31,6 +40,7 @@ class Signup extends Component {
         email: this.state.email,
       })
       .then((response) => {
+        console.log(response.data.errmsg);
         if (!response.data.errmsg) {
           console.log("successful signup");
           this.setState({
@@ -39,6 +49,9 @@ class Signup extends Component {
           });
         } else {
           console.log("username already taken");
+          // display error ErrorSnackbar
+          this.open = true;
+          console.log(this.open);
         }
       })
       .catch((error) => {
@@ -98,7 +111,7 @@ class Signup extends Component {
               <button
                 className="btn btn-primary btn-block mt-4"
                 onClick={this.handleSubmit}
-                type="submit"
+                type="button"
               >
                 Sign up
               </button>
@@ -108,6 +121,7 @@ class Signup extends Component {
             </p>
           </div>
         </div>
+        {this.open ? <ErrorSnackbar /> : null}
       </div>
     );
   }

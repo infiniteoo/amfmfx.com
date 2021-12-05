@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 
 // components
 import Signup from "./components/sign-up";
+import SignUp from "./components/SignUp";
 import LoginForm from "./components/login-form";
 import Navbar from "./components/navbar";
 import Home from "./components/home";
@@ -121,7 +122,7 @@ class App extends Component {
             path="/login"
             render={() => <LoginForm updateUser={this.updateUser} />}
           />
-          <Route path="/signup" render={() => <Signup />} />
+          <Route path="/signup" render={() => <SignUp />} />
         </div>
       </React.Fragment>
     );
