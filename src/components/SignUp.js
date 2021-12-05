@@ -13,7 +13,7 @@ const SignUp = () => {
     organization: "",
   });
 
-  const [errorSnackbar, setErrorSnackbar] = useState(false);
+  const [closeSnackbar, setCloseSnackbar] = useState(false);
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value });
@@ -43,7 +43,7 @@ const SignUp = () => {
           console.log("username already taken");
           // display error ErrorSnackbar
 
-          setErrorSnackbar(true);
+          setCloseSnackbar(true);
         }
       })
       .catch((error) => {
@@ -124,8 +124,11 @@ const SignUp = () => {
         </div>
       </div>
 
-      {errorSnackbar ? (
-        <ErrorSnackbar setErrorSnackbar={setErrorSnackbar} />
+      {closeSnackbar ? (
+        <ErrorSnackbar
+          closeSnackbar={setCloseSnackbar}
+          alertMsg="Email address already registered, please try again."
+        />
       ) : null}
     </div>
   );

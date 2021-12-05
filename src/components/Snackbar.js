@@ -9,7 +9,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 export default function CustomizedSnackbars(props) {
-  const [state, setState] = React.useState({
+  const [state] = React.useState({
     vertical: "bottom",
     horizontal: "center",
   });
@@ -21,7 +21,7 @@ export default function CustomizedSnackbars(props) {
       return;
     }
 
-    props.setErrorSnackbar(false);
+    props.closeSnackbar(false);
   };
 
   return (
@@ -32,12 +32,9 @@ export default function CustomizedSnackbars(props) {
       anchorOrigin={{ vertical, horizontal }}
     >
       <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-        Email address already registered, please try again.
+        {props.alertMsg}
       </Alert>
     </Snackbar>
-    /*   {/* <Alert severity="error">This is an error message!</Alert>
-      <Alert severity="warning">This is a warning message!</Alert>
-      <Alert severity="info">This is an information message!</Alert>
-      <Alert severity="success">This is a success message!</Alert> }*/
+    
   );
 }
