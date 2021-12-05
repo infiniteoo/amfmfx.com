@@ -10,42 +10,34 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 export default function CustomizedSnackbars(props) {
   const [state, setState] = React.useState({
-    open: true,
-    vertical: "top",
+    vertical: "bottom",
     horizontal: "center",
   });
-  console.log("snackbar props", props);
 
   const { vertical, horizontal } = state;
-
-  const handleClick = () => {
-    setState({ ...state, open: true });
-  };
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
 
-    setState({ ...state, open: false });
+    props.setErrorSnackbar(false);
   };
 
   return (
-    <Stack spacing={2} sx={{ width: "100%" }}>
-      <Snackbar
-        open={state.open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical, horizontal }}
-      >
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          Email address already registered.
-        </Alert>
-      </Snackbar>
-      {/* <Alert severity="error">This is an error message!</Alert>
+    <Snackbar
+      open={true}
+      autoHideDuration={6000}
+      onClose={handleClose}
+      anchorOrigin={{ vertical, horizontal }}
+    >
+      <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+        Email address already registered, please try again.
+      </Alert>
+    </Snackbar>
+    /*   {/* <Alert severity="error">This is an error message!</Alert>
       <Alert severity="warning">This is a warning message!</Alert>
       <Alert severity="info">This is an information message!</Alert>
-      <Alert severity="success">This is a success message!</Alert> */}
-    </Stack>
+      <Alert severity="success">This is a success message!</Alert> }*/
   );
 }

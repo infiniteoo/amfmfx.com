@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
 import ErrorSnackbar from "./Snackbar";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
+
 const SignUp = () => {
   const [state, setState] = useState({
     username: "",
@@ -11,27 +10,15 @@ const SignUp = () => {
     confirmPassword: "",
     email: "",
     successfulSignUp: "false",
-    vertical: "bottom",
-    horizontal: "center",
-    openSnackbar: false,
+    organization: "",
   });
 
-  const Alert = React.forwardRef(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-  });
-
-  const { vertical, horizontal, openSnackbar } = state;
+  const [errorSnackbar, setErrorSnackbar] = useState(false);
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value });
   };
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
 
-    setState({ ...state, openSnackbar: false });
-  };
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -41,6 +28,7 @@ const SignUp = () => {
         username: state.username,
         password: state.password,
         email: state.email,
+        organization: state.organization,
       })
       .then((response) => {
         console.log(response.data.errmsg);
@@ -55,15 +43,7 @@ const SignUp = () => {
           console.log("username already taken");
           // display error ErrorSnackbar
 
-          console.log("open value", openSnackbar);
-          setState({
-            ...state,
-
-            username: "",
-            password: "",
-            email: "",
-            openSnackbar: true,
-          });
+          setErrorSnackbar(true);
         }
       })
       .catch((error) => {
@@ -82,16 +62,17 @@ const SignUp = () => {
           <h1 className="text-center mb-3">create account</h1>
 
           <form>
-            <div className="form-group">
-              <input
-                className="form-control p-3"
-                type="text"
-                id="username"
-                name="username"
-                placeholder="create username"
-                value={state.username}
-                onChange={handleChange}
-              />
+            <div className="form-group mt-3">
+              <div className="">
+                <input
+                  className="form-control p-3"
+                  placeholder="enter email address"
+                  type="email"
+                  name="email"
+                  value={state.email}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
 
             <div className="form-group mt-3">
@@ -107,16 +88,26 @@ const SignUp = () => {
               </div>
             </div>
             <div className="form-group mt-3">
-              <div className="">
-                <input
-                  className="form-control p-3"
-                  placeholder="enter email address"
-                  type="email"
-                  name="email"
-                  value={state.email}
-                  onChange={handleChange}
-                />
-              </div>
+              <input
+                className="form-control p-3"
+                type="text"
+                id="username"
+                name="username"
+                placeholder="enter name"
+                value={state.username}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group mt-3">
+              <input
+                className="form-control p-3"
+                type="text"
+                id="organization"
+                name="organization"
+                placeholder="enter organization"
+                value={state.organization}
+                onChange={handleChange}
+              />
             </div>
 
             <button
@@ -133,16 +124,9 @@ const SignUp = () => {
         </div>
       </div>
 
-      <Snackbar
-        open={state.openSnackbar}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical, horizontal }}
-      >
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          Email address already registered.
-        </Alert>
-      </Snackbar>
+      {errorSnackbar ? (
+        <ErrorSnackbar setErrorSnackbar={setErrorSnackbar} />
+      ) : null}
     </div>
   );
 };

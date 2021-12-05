@@ -13,7 +13,7 @@ router.post("/", (req, res) => {
   const { username, password, email, organization } = req.body;
 
   // ADD VALIDATION
-  User.findOne({ username }, (err, user) => {
+  User.findOne({ email }, (err, user) => {
     if (err) {
       console.log("User.js post error: ", err);
     } else if (user) {
