@@ -3,7 +3,7 @@ import axios from "axios";
 import { Route } from "react-router-dom";
 
 // components
-import Signup from "./components/sign-up";
+
 import SignUp from "./components/SignUp";
 import LoginForm from "./components/login-form";
 import Navbar from "./components/navbar";
