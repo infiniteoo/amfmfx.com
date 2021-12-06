@@ -4,12 +4,13 @@ import axios from "axios";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
 import { ThumbUpSharp } from "@mui/icons-material";
 import ErrorSnackbar from "./Snackbar";
+import { responsiveFontSizes } from "@material-ui/core";
 
 class LoginForm extends Component {
   constructor() {
     super();
     this.state = {
-      username: "",
+      email: "",
       password: "",
       redirectTo: null,
       closeSnackbar: false,
@@ -36,7 +37,7 @@ class LoginForm extends Component {
 
     axios
       .post("/user/login", {
-        username: this.state.username,
+        email: this.state.email,
         password: this.state.password,
       })
       .then((response) => {
@@ -50,6 +51,7 @@ class LoginForm extends Component {
             userId: response.data.userId,
             lastLogin: response.data.lastLogin,
             previousLogin: response.data.previousLogin,
+            email: response.data.email,
           });
 
           // update the state to redirect to home
@@ -64,7 +66,7 @@ class LoginForm extends Component {
         console.log(error);
         this.setState({
           closeSnackbar: true,
-          username: "",
+          email: "",
           password: "",
         });
       });
@@ -87,11 +89,11 @@ class LoginForm extends Component {
                 <div className="form-group">
                   <input
                     type="email"
-                    id="username"
-                    name="username"
+                    id="email"
+                    name="email"
                     className="form-control p-3"
-                    placeholder="enter username"
-                    value={this.state.username}
+                    placeholder="enter email"
+                    value={this.state.email}
                     onChange={this.handleChange}
                   />
                 </div>

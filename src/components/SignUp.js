@@ -53,7 +53,17 @@ const SignUp = () => {
   };
 
   return state.successfulSignUp === "true" ? (
-    <h1>confirmed!</h1>
+    <div className="homeSplash">
+      <img src={amfmfxLogo} alt="" />
+      <br /> <br />
+      <h1>account created!</h1>
+      <br />
+      <br />
+      <h4>
+        please check your email inbox to confirm your email address and activate
+        your account. welcome to amfmfx.com!
+      </h4>
+    </div>
   ) : (
     <div className="splashScreen">
       <div className="">

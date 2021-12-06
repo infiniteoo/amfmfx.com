@@ -3,20 +3,23 @@ const LocalStrategy = require("passport-local").Strategy;
 
 const strategy = new LocalStrategy(
   {
-    usernameField: "username", // not necessary, DEFAULT
+    usernameField: "email", // not necessary, DEFAULT
   },
-  function (username, password, done) {
-    User.findOne({ username: username }, (err, user) => {
+  function (email, password, done) {
+    console.log("email", email);
+    console.log("password", password);
+    User.findOne({ email: email }, (err, user) => {
       if (err) {
+        console.log("err in passport local strategy", err);
         return done(err);
       }
       if (!user) {
-        return done(null, false, { message: "Incorrect username" });
+        return done(null, false, { message: "Incorrect email address" });
       }
       if (!user.checkPassword(password)) {
         return done(null, false, { message: "Incorrect password" });
       }
-      
+
       return done(null, user);
     });
   }
