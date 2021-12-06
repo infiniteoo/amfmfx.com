@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
+import { ThumbUpSharp } from "@mui/icons-material";
+import ErrorSnackbar from "./Snackbar";
 
 class LoginForm extends Component {
   constructor() {
@@ -10,9 +12,11 @@ class LoginForm extends Component {
       username: "",
       password: "",
       redirectTo: null,
+      closeSnackbar: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSnackbarClose = this.handleSnackbarClose.bind(this);
   }
 
   handleChange(event) {
@@ -20,6 +24,12 @@ class LoginForm extends Component {
       [event.target.name]: event.target.value,
     });
   }
+
+  handleSnackbarClose = () => {
+    this.setState({
+      closeSnackbar: false,
+    });
+  };
 
   handleSubmit(event) {
     event.preventDefault();
@@ -48,9 +58,15 @@ class LoginForm extends Component {
           });
         }
       })
+
       .catch((error) => {
         console.log("login error: ");
         console.log(error);
+        this.setState({
+          closeSnackbar: true,
+          username: "",
+          password: "",
+        });
       });
   }
 
@@ -103,6 +119,13 @@ class LoginForm extends Component {
               </p>
             </div>
           </div>
+          {this.state.closeSnackbar ? (
+            <ErrorSnackbar
+              closeSnackbar={this.handleSnackbarClose}
+              alertMsg="Error logging in. Please check your credentials and try
+          again."
+            />
+          ) : null}
         </div>
       );
     }
