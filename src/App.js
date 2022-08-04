@@ -22,6 +22,7 @@ class App extends Component {
       userId: null,
       lastLogin: null,
       previousLogin: null,
+      confirmed: false,
     };
 
     this.getUser = this.getUser.bind(this);
@@ -90,7 +91,7 @@ class App extends Component {
             exact
             path="/"
             render={
-              this.state.loggedIn
+              this.state.loggedIn && this.state.confirmed
                 ? () => (
                     <Dashboard
                       updateUser={this.updateUser}
@@ -104,11 +105,15 @@ class App extends Component {
             exact
             path="/admin"
             render={
-              this.state.loggedIn && this.state.accessLevel > 4
+              this.state.loggedIn &&
+              this.state.accessLevel > 4 &&
+              this.state.confirmed
                 ? () => (
                     <Admin updateUser={this.updateUser} state={this.state} />
                   )
-                : this.state.loggedIn && this.state.accessLevel < 4
+                : this.state.loggedIn &&
+                  this.state.accessLevel < 4 &&
+                  this.state.confirmed
                 ? () => (
                     <Dashboard
                       updateUser={this.updateUser}
