@@ -17,14 +17,14 @@ export default function ContinuousSlider(props) {
   return (
     <Box sx={{ width: 200 }}>
       <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
-        <VolumeDown sx={{ color: "#32fbe2" }} />
+        <VolumeDown sx={{ color: "#4582ec" }} />
         <Slider
           aria-label="Volume"
           value={value}
           onChange={handleChange}
           sx={{ color: "white" }}
         />
-        <VolumeUp sx={{ color: "#32fbe2" }} />
+        <VolumeUp sx={{ color: "#4582ec" }} />
       </Stack>
     </Box>
   );

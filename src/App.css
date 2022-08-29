@@ -1,10 +1,19 @@
 body {
-  font-family: "Comfortaa", cursive !important;
+  font-family: "Ruda", sans-serif !important;
 }
 
 .css-10hburv-MuiTypography-root {
-  font-family: "Comfortaa", cursive !important;
-  font-size: 12px !important;
+  font-family: "Ruda", sans-serif !important;
+  font-size: 14px !important;
+}
+
+.css-1wniyei-MuiTypography-root {
+  font-family: "Ruda", sans-serif !important;
+  font-size: 18px !important;
+}
+
+.css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root {
+  color: "black" !important;
 }
 
 .css-ojxnvh-MuiButtonBase-root-MuiListItemButton-root:hover {
@@ -103,9 +112,9 @@ body {
   flex: 0 0 4%;
 }
 
-.navbar span:hover {
+/* .navbar span:hover {
   color: #32fbe2 !important;
-}
+} */
 
 .add-sound-form label {
   margin-top: 10px;
@@ -184,12 +193,12 @@ body {
   top: 0;
   z-index: 100;
   overflow: hidden;
-  background: linear-gradient(
+  /* background: linear-gradient(
     120deg,
     rgba(255, 255, 255, 1) 32%,
     rgba(214, 51, 132, 1) 56%,
     rgba(0, 0, 0, 1) 100%
-  );
+  ); */
 }
 
 .dashboard_container {
@@ -213,10 +222,10 @@ body {
   color: white !important;
 }
 
-.css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+/* .css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
   background-color: rgb(167, 54, 110) !important;
-}
+} */
 
 .css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root {
-  color: #fff !important;
+  color: "black" !important;
 }

@@ -61,15 +61,15 @@ const Soundtable = (props) => {
                   sx={{
                     marginTop: "5px",
                     width: "100%",
-                    background:
-                      "linear-gradient(120deg, rgba(255,255,255,.5) 5%, rgba(111,66,193,.5) 64%, rgba(234,57,184,.5) 88%)",
+                    /*  background:
+                      "linear-gradient(120deg, rgba(255,255,255,.5) 5%, rgba(111,66,193,.5) 64%, rgba(234,57,184,.5) 88%)", */
                   }}
                 >
                   <CardContent
                     sx={{
                       display: "flex",
                       justifyContent: "space-between",
-                      color: "white",
+                      color: "black",
                     }}
                   >
                     <div>
@@ -142,6 +142,7 @@ const Soundtable = (props) => {
                       container={uid()}
                       track={uid()}
                       volume={props.volume}
+                      waveColor="black"
                     />
                   </CardMedia>
                   <CardActions>

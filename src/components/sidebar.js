@@ -76,8 +76,8 @@ export default function Sidebar(props) {
 
             color: "white",
             maxWidth: 360,
-            backgroundImage:
-              "linear-gradient(#17082e 0,#1a0933 7%,#1a0933 80%,#0c1f4c 100%)",
+            backgroundColor: "black",
+            /* "linear-gradient(#17082e 0,#1a0933 7%,#1a0933 80%,#0c1f4c 100%)", */
           }}
           component="nav"
         >

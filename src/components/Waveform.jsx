@@ -20,6 +20,7 @@ class Waveform extends Component {
     this.track = props.track;
     this.volume = props.volume;
     this.setActiveSound = props.setActiveSound;
+    this.waveColor = props.waveColor;
   }
 
   componentDidUpdate(prevProps) {
@@ -44,9 +45,9 @@ class Waveform extends Component {
       container: "#" + this.container,
       backend: "WebAudio",
       height: 25,
-      progressColor: "#cd5ff8",
+      progressColor: "#4582ec",
       responsive: true,
-      waveColor: "#EFEFEF",
+      waveColor: this.waveColor,
       cursorColor: "transparent",
       hideScrollbar: true,
       setVolume: this.volume / 100,

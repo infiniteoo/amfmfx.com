@@ -18,6 +18,7 @@ const audioplayer = (props) => {
           url={finalURL}
           setActiveSound={props.setActiveSound}
           volume={props.volume}
+          waveColor="white"
         />
       </div>
       <div
