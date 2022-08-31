@@ -164,10 +164,13 @@ router.get("/", (req, res, next) => {
 
 router.post("/logout", (req, res) => {
   if (req.user) {
-    req.logout();
-    res.send({ msg: "logging out" });
-  } else {
-    res.send({ msg: "no user to log out" });
+    req.logout((err) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send("logout successful");
+      }
+    });
   }
 });
 
