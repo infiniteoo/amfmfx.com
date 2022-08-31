@@ -10,6 +10,7 @@ import Navbar from "./components/navbar";
 import Home from "./components/home";
 import Dashboard from "./components/dashboard";
 import Admin from "./components/admin";
+import Welcome from "./components/Welcome/Welcome";
 
 class App extends Component {
   constructor() {
@@ -128,6 +129,7 @@ class App extends Component {
             render={() => <LoginForm updateUser={this.updateUser} />}
           />
           <Route path="/signup" render={() => <SignUp />} />
+          <Route path="/welcome" render={() => <Welcome />} />
         </div>
       </React.Fragment>
     );

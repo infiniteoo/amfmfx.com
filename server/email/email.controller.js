@@ -54,7 +54,7 @@ exports.confirmEmail = (req, res) => {
       // user and let them know their email address has been confirmed.
       else if (user && !user.confirmed) {
         User.findByIdAndUpdate(id, { confirmed: true, accessLevel: 1 })
-          .then(() => res.json({ msg: msgs.confirmed }))
+          .then(() => res.redirect("http://localhost:3000/welcome"))
           .catch((err) => console.log(err));
       }
 
