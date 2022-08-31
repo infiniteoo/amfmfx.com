@@ -2,7 +2,7 @@
 
 
 # ignore /server/public/sounds directory
-/server/public/sounds
+# /server/public/sounds
 
 # dependencies
 /node_modules
