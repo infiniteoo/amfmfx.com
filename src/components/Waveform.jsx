@@ -68,7 +68,7 @@ class Waveform extends Component {
   };
 
   render() {
-    console.log("this.filename in waveform", this.filename);
+    /*  console.log("this.filename in waveform", this.filename); */
     return (
       <WaveformContainer>
         <PlayButton onClick={this.handlePlay}>
