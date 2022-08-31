@@ -16,7 +16,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 const drawerWidth = "10%";
 
 export default function Sidebar(props) {
-  console.log("in sidebar, props.state", props.state);
+  /* console.log("in sidebar, props.state", props.state); */
   const [open, setOpen] = React.useState({
     filters: true,
     topicals: true,
