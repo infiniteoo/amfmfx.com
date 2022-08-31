@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
 let upload = multer({ dest: "server/public/sounds/", storage: storage });
 
 // SOUNDS MODEL
-const Sounds = require("../database/models/Sounds");
+const Sounds = require("../database/models/sounds");
 
 // @route   GET api/sounds
 // @desc    Get all sounds
