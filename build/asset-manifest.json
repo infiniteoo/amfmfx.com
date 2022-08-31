@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.dc8fbc2a.css",
+    "main.js": "/static/js/main.a1068a6b.js",
+    "static/media/pp_demo_sept21.mp3": "/static/media/pp_demo_sept21.01870d7092981058a6c5.mp3",
+    "static/media/amfmfx.com text logo.png": "/static/media/amfmfx.com text logo.97d82fe0fb6bb7c69569.png",
+    "index.html": "/index.html",
+    "main.dc8fbc2a.css.map": "/static/css/main.dc8fbc2a.css.map",
+    "main.a1068a6b.js.map": "/static/js/main.a1068a6b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dc8fbc2a.css",
+    "static/js/main.a1068a6b.js"
+  ]
+}

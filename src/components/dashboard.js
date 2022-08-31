@@ -2,7 +2,7 @@ import React from "react";
 import Audioplayer from "./audioplayer";
 import Sidebar from "./sidebar";
 import axios from "axios";
-import Soundtable from "./soundtable.js";
+import Soundtable from "./Soundtable.js";
 
 const Dashboard = (props) => {
   const [volume, setVolume] = React.useState(0.3);
