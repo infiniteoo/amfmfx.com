@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 // connect to cloud database atlas
 const uri = process.env.MONGODB_CONNECT_STRING;
 
-mongoose.connect(uri, { autoIndex: false }).then(
+mongoose.connect(uri, { autoIndex: false, useUnifiedTopology: true }).then(
   () => {
     /** ready to use. The `mongoose.connect()` promise resolves to undefined. */
     console.log("Connected to Mongo");

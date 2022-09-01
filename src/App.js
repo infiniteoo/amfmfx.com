@@ -11,6 +11,7 @@ import Home from "./components/home";
 import Dashboard from "./components/dashboard";
 import Admin from "./components/admin";
 import Welcome from "./components/Welcome/Welcome";
+import About from "./components/About/About";
 
 class App extends Component {
   constructor() {
@@ -130,6 +131,7 @@ class App extends Component {
           />
           <Route path="/signup" render={() => <SignUp />} />
           <Route path="/welcome" render={() => <Welcome />} />
+          <Route path="/about" render={() => <About />} />
         </div>
       </React.Fragment>
     );

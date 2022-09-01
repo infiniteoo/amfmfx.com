@@ -5,6 +5,7 @@ import "../App.css";
 import PopOver from "./accountpopover";
 import logo from "../assets/amfmfx.com text logo.png";
 import SearchBar from "./SearchBar";
+import About from "./About/About";
 
 class Navbar extends Component {
   constructor() {
@@ -67,6 +68,9 @@ class Navbar extends Component {
                 </Link>
                 <Link to="/signup" className="btn btn-link">
                   <span className="text-secondary">sign up</span>
+                </Link>
+                <Link to="/about" className="btn btn-link">
+                  <span className="text-secondary">about</span>
                 </Link>
               </div>
             )}
