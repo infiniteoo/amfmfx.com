@@ -21,7 +21,7 @@ export const PlayButton = styled.button`
   align-items: center;
   width: 30px;
   height: 30px;
-  /* background: #efefef; */
+
   border-radius: 50%;
   border: none;
   outline: none;

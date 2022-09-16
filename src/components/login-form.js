@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import amfmfxLogo from "../assets/amfmfx.com text logo.png";
-import { ThumbUpSharp } from "@mui/icons-material";
 import ErrorSnackbar from "./Snackbar";
-import { responsiveFontSizes } from "@material-ui/core";
 
 class LoginForm extends Component {
   constructor() {
@@ -42,7 +40,6 @@ class LoginForm extends Component {
       })
       .then((response) => {
         if (response.status === 200) {
-          // update App.js state
           this.props.updateUser({
             loggedIn: true,
             username: response.data.username,
@@ -55,7 +52,6 @@ class LoginForm extends Component {
             confirmed: response.data.confirmed,
           });
 
-          // update the state to redirect to home
           this.setState({
             redirectTo: "/",
           });

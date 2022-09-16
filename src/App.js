@@ -80,14 +80,14 @@ class App extends Component {
           userInfo={this.state}
         />
         <div className="mainContainer">
-          {/* greet user if logged in: */}
+          
           {this.state.loggedIn && (
             <p>
               welcome, {this.state.username}! (downloads remaining:{" "}
               {this.state.downloadsRemaining})
             </p>
           )}
-          {/* Routes to different components */}
+        
 
           <Route
             exact

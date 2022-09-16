@@ -1,5 +1,4 @@
 import React from "react";
-/* import { GlobalStyles } from "../Donation_Form/shared"; */
 import amfmfxLogo from "../../assets/amfmfx.com text logo.png";
 
 const Welcome = () => {
@@ -16,8 +15,6 @@ const Welcome = () => {
           <a href="/login">Login</a>
         </div>
       </div>
-
-      <div>{/*  <GlobalStyles /> */}</div>
     </div>
   );
 };

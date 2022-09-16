@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const getMP3 = (filename, props) => {
+  console.log("this filename", filename);
   if (props.state.downloadsRemaining > 0) {
     props.state.downloadsRemaining--;
     axios({

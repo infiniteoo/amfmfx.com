@@ -16,8 +16,6 @@ export default function About() {
 
   return (
     <Container style={{ marginTop: "100px" }} className="aboutContainer">
-      {/* <img src={amfmfxLogo} alt="" /> */}
-
       <section className="card">
         <img src={linkmanagement} alt="" />
         <div>
@@ -74,7 +72,7 @@ export default function About() {
           </h3>
           <p>
             AMFMFX.com.com was created with the MERN stack (MongoDB, Express,
-            React, Node.js). 
+            React, Node.js).
           </p>
         </div>
       </section>
@@ -91,7 +89,6 @@ export default function About() {
             Radio, Cox Media Group, and many more. We have also worked with
             countless radio stations and production companies across the country
             and around the world.
-            
           </p>
         </div>
       </section>
@@ -111,7 +108,6 @@ export default function About() {
           </p>
         </div>
       </section>
-      {/*     </div> */}
     </Container>
   );
 }

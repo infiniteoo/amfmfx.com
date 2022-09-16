@@ -23,6 +23,7 @@ const Dashboard = (props) => {
   });
 
   React.useEffect(() => {
+    
     axios
       .get("/api/sounds/")
       .then((res) => {

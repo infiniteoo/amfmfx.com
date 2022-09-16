@@ -4,8 +4,6 @@ import axios from "axios";
 import "../App.css";
 import PopOver from "./accountpopover";
 import logo from "../assets/amfmfx.com text logo.png";
-import SearchBar from "./SearchBar";
-import About from "./About/About";
 
 class Navbar extends Component {
   constructor() {
@@ -47,9 +45,6 @@ class Navbar extends Component {
                     <img src={logo} alt="" srcSet="" height="60px" />
                   </a>
                 </li>
-                {/*  <li className="nav_search">
-                  <SearchBar />
-                </li> */}
 
                 <li className="nav-account">
                   <PopOver

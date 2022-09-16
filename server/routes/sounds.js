@@ -41,7 +41,8 @@ router.get("/sounds/:parameter", (req, res) => {
 // @ access Private
 
 router.get("/sound/:category/:subcategory/:filename", (req, res) => {
-  console.log("oogabooga", req.params);
+  console.log("SOUND ROUTE HIT");
+  console.log(req.params);
   res.sendFile(
     path.join(
       __dirname,

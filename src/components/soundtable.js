@@ -1,9 +1,7 @@
 import React from "react";
-import { List, ListItem, makeStyles, Divider, Box } from "@material-ui/core";
+import { List, makeStyles, Divider, Box } from "@material-ui/core";
 import Pagination from "@mui/material/Pagination";
-import axios from "axios";
 import CircleLoading from "./loading.js";
-
 import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
 import Waveform from "./Waveform";
 import getMP3 from "../utils/getMP3";
@@ -49,7 +47,7 @@ const Soundtable = (props) => {
   }, [props.sounds]);
 
   return (
-    <div  className="wavHolder">
+    <div className="wavHolder">
       {props.sounds.length > 0 ? (
         <List dense component="span">
           {props.sounds
@@ -61,8 +59,6 @@ const Soundtable = (props) => {
                   sx={{
                     marginTop: "5px",
                     width: "100%",
-                    /*  background:
-                      "linear-gradient(120deg, rgba(255,255,255,.5) 5%, rgba(111,66,193,.5) 64%, rgba(234,57,184,.5) 88%)", */
                   }}
                 >
                   <CardContent

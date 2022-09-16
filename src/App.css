@@ -121,10 +121,6 @@ img {
   flex: 0 0 4%;
 }
 
-/* .navbar span:hover {
-  color: #32fbe2 !important;
-} */
-
 .add-sound-form label {
   margin-top: 10px;
 }
@@ -206,12 +202,6 @@ img {
   top: 0;
   z-index: 100;
   overflow: hidden;
-  /* background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 1) 32%,
-    rgba(214, 51, 132, 1) 56%,
-    rgba(0, 0, 0, 1) 100%
-  ); */
 }
 
 .dashboard_container {
@@ -234,10 +224,6 @@ img {
 .white-text {
   color: white !important;
 }
-
-/* .css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
-  background-color: rgb(167, 54, 110) !important;
-} */
 
 .css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root {
   color: "black" !important;
@@ -295,11 +281,6 @@ img {
 }
 
 @media (max-width: 963px) {
-  /*  body {
-    background-image: none !important;
-    background-color: black !important;
-  } */
-
   .homeSplash h3 {
     font-size: 1.2rem !important;
   }

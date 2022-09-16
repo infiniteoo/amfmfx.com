@@ -31,6 +31,7 @@ class Waveform extends Component {
       const track = document.querySelector(`#${this.track}`);
       this.track = this.props.track;
       this.filename = this.props.filename || this.props.activeSound;
+      
       track.setAttribute("src", "/api/sound/" + this.filename);
       this.waveform.load(track);
     }
@@ -58,7 +59,7 @@ class Waveform extends Component {
       this.waveform.seekTo(0);
     });
 
-    this.waveform.load(track);
+    this.track !== "track" && this.waveform.load(track);
   }
 
   handlePlay = () => {
@@ -68,7 +69,6 @@ class Waveform extends Component {
   };
 
   render() {
-    /*  console.log("this.filename in waveform", this.filename); */
     return (
       <WaveformContainer>
         <PlayButton onClick={this.handlePlay}>

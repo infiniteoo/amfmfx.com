@@ -14,9 +14,8 @@ const addsound = () => {
   });
 
   const handleClick = () => {
-    
     const chosenFiles = document.getElementById("files");
-    
+
     const data = new FormData();
     data.append("file", chosenFiles.files[0]);
 
@@ -30,13 +29,16 @@ const addsound = () => {
         console.log(err);
       });
 
-    axios.post("/api/sounds/uploadFile", data).then((res) => {
-      console.log(res);
-    }).then(() => {
-      axios.post("/api/sounds/moveFile", fileToUpload).then((res) => {
+    axios
+      .post("/api/sounds/uploadFile", data)
+      .then((res) => {
         console.log(res);
+      })
+      .then(() => {
+        axios.post("/api/sounds/moveFile", fileToUpload).then((res) => {
+          console.log(res);
+        });
       });
-    });
   };
 
   // Create a non-dom allocated Audio element
@@ -81,7 +83,6 @@ const addsound = () => {
         <select
           className="form-control"
           id="exampleFormControlSelect1"
-          /*  defaultValue={"DEFAULT"} */
           value={fileToUpload.category || "DEFAULT"}
           onChange={(e) => {
             setFileToUpload({ ...fileToUpload, category: e.target.value });
@@ -185,13 +186,8 @@ const addsound = () => {
                 audio.addEventListener(
                   "loadedmetadata",
                   function () {
-                    // Obtain the duration in seconds of the audio file (with milliseconds as well, a float value)
                     var duration = audio.duration;
 
-                    // example 12.3234 seconds
-                    console.log(
-                      "The duration of the song is of: " + duration + " seconds"
-                    );
                     let time = parseInt(duration, 10);
                     let minutes = Math.floor(time / 60);
                     let seconds = time - minutes * 60;
@@ -205,9 +201,6 @@ const addsound = () => {
 
                       filename: file.name,
                     });
-                    // Alternatively, just display the integer value with
-                    // parseInt(duration)
-                    // 12 seconds
                   },
                   false
                 );

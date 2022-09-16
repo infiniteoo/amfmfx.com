@@ -16,7 +16,6 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 const drawerWidth = "10%";
 
 export default function Sidebar(props) {
-  /* console.log("in sidebar, props.state", props.state); */
   const [open, setOpen] = React.useState({
     filters: true,
     topicals: true,
@@ -77,11 +76,9 @@ export default function Sidebar(props) {
             color: "white",
             maxWidth: 360,
             backgroundColor: "black",
-            /* "linear-gradient(#17082e 0,#1a0933 7%,#1a0933 80%,#0c1f4c 100%)", */
           }}
           component="nav"
         >
-          {/* FILTER SECTION */}
           <ListItemButton
             onClick={() => handleClick("filters")}
             sx={{
@@ -114,9 +111,7 @@ export default function Sidebar(props) {
               </ListItemButton>
             </List>
           </Collapse>
-          {/* END FILTER SECTION */}
 
-          {/* imaging SECTION */}
           <ListItemButton
             onClick={() => handleClick("imaging")}
             sx={{
@@ -152,8 +147,7 @@ export default function Sidebar(props) {
               </ListItemButton>
             </List>
           </Collapse>
-          {/* END imaging SECTION */}
-          {/* music SECTION */}
+
           <ListItemButton
             onClick={() => handleClick("music")}
             sx={{
@@ -213,9 +207,7 @@ export default function Sidebar(props) {
               </ListItemButton>
             </List>
           </Collapse>
-          {/* END music SECTION */}
 
-          {/* soundDesign SECTION */}
           <ListItemButton
             onClick={() => handleClick("soundDesign")}
             sx={{
@@ -257,9 +249,7 @@ export default function Sidebar(props) {
               </ListItemButton>
             </List>
           </Collapse>
-          {/* END soundDesign SECTION */}
 
-          {/* voiceSamples SECTION */}
           <ListItemButton
             onClick={() => handleClick("voiceSamples")}
             sx={{
@@ -302,7 +292,6 @@ export default function Sidebar(props) {
               </ListItemButton>
             </List>
           </Collapse>
-          {/* END voiceSamples SECTION */}
         </List>
       </Drawer>
     </Box>
