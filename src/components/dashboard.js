@@ -8,6 +8,19 @@ const Dashboard = (props) => {
   const [volume, setVolume] = React.useState(0.3);
   const [sounds, setSounds] = React.useState([]);
   const [activeSound, setActiveSound] = React.useState(null);
+  const [amIMobile, setAmIMobile] = React.useState(false);
+
+  const mql = window.matchMedia("(max-width: 1330px)");
+  let mobileView = mql.matches;
+  mql.addEventListener("change", (e) => {
+    console.log(e.matches);
+    mobileView = e.matches;
+    if (mobileView) {
+      setAmIMobile(true);
+    } else {
+      setAmIMobile(false);
+    }
+  });
 
   React.useEffect(() => {
     axios
@@ -51,11 +64,13 @@ const Dashboard = (props) => {
           activeSound={activeSound}
           setActiveSound={setActiveSound}
         />
-        <Sidebar
-          getSounds={getSounds}
-          state={props.state}
-          setSounds={setSounds}
-        />
+        {!amIMobile ? (
+          <Sidebar
+            getSounds={getSounds}
+            state={props.state}
+            setSounds={setSounds}
+          />
+        ) : null}
       </div>
     </div>
   );

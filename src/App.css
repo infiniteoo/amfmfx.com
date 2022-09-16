@@ -78,6 +78,15 @@ body {
   justify-content: center;
   height: 94.5vh;
 }
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.homeSplash img {
+  width: 50%;
+}
 .adminSplash {
   display: flex;
   flex-direction: column;
@@ -135,6 +144,10 @@ body {
 }
 .audioPlayer_header {
   border-bottom: 2px solid white;
+}
+
+.wavHolder {
+  margin-top: 10%;
 }
 
 .css-x3xxi0-MuiSvgIcon-root {
@@ -228,4 +241,99 @@ body {
 
 .css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root {
   color: "black" !important;
+}
+
+/* media query  */
+@media (max-width: 1330px) {
+  .mainContainer {
+    width: 100%;
+    margin-left: 0;
+  }
+  .navholder {
+    padding-left: 0;
+  }
+  .audioPlayer_container {
+    width: 100%;
+  }
+  .nav_search {
+    flex: 0 0 70%;
+  }
+  .nav_logo {
+    flex: 0 0 30%;
+  }
+  .nav-account {
+    flex: 0 0 10%;
+  }
+  .searchbar_holder {
+    flex: 0 0 80% !important;
+  }
+  .volume_holder {
+    flex: 0 0 20% !important;
+  }
+  .divider_holder {
+    flex: 0 0 0% !important;
+  }
+  .audioplayer_elements {
+    flex: 0 0 30%;
+  }
+  .audioplayer_master {
+    flex: 0 0 70%;
+  }
+}
+
+@media (max-width: 1198px) {
+  .homeSplash h3 {
+    width: 100%;
+    font-size: 1.4rem !important;
+  }
+}
+
+@media (max-width: 1193px) {
+  .wavHolder {
+    margin-top: 20%;
+  }
+}
+
+@media (max-width: 963px) {
+  /*  body {
+    background-image: none !important;
+    background-color: black !important;
+  } */
+
+  .homeSplash h3 {
+    font-size: 1.2rem !important;
+  }
+
+  .dashboard_title {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .homeSplash h1 {
+    font-size: 1.5rem;
+  }
+
+  .homeSplash img {
+    width: 100%;
+  }
+
+  #nav-container span {
+    font-size: 0.9rem;
+  }
+
+  .homeSplash {
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 600px) {
+  .wavHolder {
+    margin-top: 25%;
+  }
+}
+@media (max-width: 443px) {
+  .wavHolder {
+    margin-top: 30%;
+  }
 }

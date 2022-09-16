@@ -49,7 +49,7 @@ const Soundtable = (props) => {
   }, [props.sounds]);
 
   return (
-    <div style={{ marginTop: "10%" }}>
+    <div  className="wavHolder">
       {props.sounds.length > 0 ? (
         <List dense component="span">
           {props.sounds

@@ -77,6 +77,7 @@ router.post(
       { _id: req.user._id },
 
       function (err, user) {
+        let userInfo;
         if (err) {
           console.log(err);
         } else {
@@ -116,7 +117,7 @@ router.post(
                   console.log("bi-monthly reset.  5 downloads added.");
                 }
                 /*  console.log("logged in ooga", req.user); */
-                var userInfo = {
+                userInfo = {
                   username: user.username,
                   password: user.password,
                   accessLevel: user.accessLevel,
@@ -127,7 +128,7 @@ router.post(
                   email: user.email,
                   confirmed: user.confirmed,
                 };
-                res.send(userInfo);
+                /* res.send(userInfo); */
               }
             );
           } else {
@@ -135,7 +136,7 @@ router.post(
           }
         }
         console.log("logged in ooga", req.user);
-        var userInfo = {
+        userInfo = {
           username: user.username,
           password: user.password,
           accessLevel: user.accessLevel,

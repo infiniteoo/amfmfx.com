@@ -27,6 +27,7 @@ class Waveform extends Component {
       waveColor: "black",
       cursorColor: "transparent",
       hideScrollbar: true,
+      /* width: "100%", */
     });
 
     this.waveform.load(track);
